@@ -1,17 +1,43 @@
 import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
+import USWebDesignStandards from "typography-theme-us-web-design-standards"
 
-Wordpress2016.overrideThemeStyles = () => {
+USWebDesignStandards.overrideThemeStyles = ({ rhythm }, options, styles) => {
   return {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
+    "a:visited": {
+      color: styles.a.color,
+    },
+    "h3": {
+      fontWeight: `normal`,
+    },
+    "article p:last-child": {
+      marginBottom: 0,
+    },
+    "dt": {
+      display: `inline-block`,
+      verticalAlign: `top`,
+      width: `9%`,
+      margin: 0,
+    },
+    "dd": {
+      display: `inline-block`,
+      verticalAlign: `top`,
+      width: `90%`,
+      marginBottom: rhythm(1/3),
+    },
+    "@media print": {
+      "#toggle": {
+        display: `none`,
+      },
+    },
   }
 }
 
-delete Wordpress2016.googleFonts
+delete USWebDesignStandards.googleFonts
 
-const typography = new Typography(Wordpress2016)
+const typography = new Typography(USWebDesignStandards)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

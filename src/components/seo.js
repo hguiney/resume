@@ -25,7 +25,9 @@ function SEO({ description, lang, meta, keywords, title }) {
     `
   )
 
+  title = title || site.siteMetadata.title
   const metaDescription = description || site.siteMetadata.description
+  const isHomepage = ( title === site.siteMetadata.title )
 
   return (
     <Helmet
@@ -33,7 +35,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={isHomepage ? `%s` : `%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
@@ -93,7 +95,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO

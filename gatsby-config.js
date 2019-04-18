@@ -1,19 +1,33 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Hugh Guiney’s Résumé`,
+    author: `Hugh Guiney`,
+    jobTitle: `UX Designer, Web Developer`,
+    description: `I handcraft online experiences that are user-focused,  content-driven, and work across devices.`,
+    siteUrl: `https://hughx.com/resume/`,
+    email: ( process.env.EMAIL || `email@example.com`),
+    portfolioUrl: `https://hughx.com`,
+    phoneNumber: ( process.env.PHONE_NUMBER || `+1 (555) 123-4567`),
+    location: {
+      city: `Boston`,
+      region: `MA`,
+      country: `USA`,
+    },
     social: {
-      twitter: `kylemathews`,
+      twitter: `TurboHax`,
+      github: `hguiney`,
+      stackoverflow: `214325/hugh-guiney`,
+      linkedin: `hughguiney`,
     },
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content/experience`,
+        name: `experience`,
       },
     },
     {
