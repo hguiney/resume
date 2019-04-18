@@ -6,7 +6,6 @@
   "version": "0.0.0",
   "author": "Hugh Guiney",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
     "dotenv": "^7.0.0",
     "gatsby": "^2.3.16",
     "gatsby-image": "^2.0.37",
@@ -25,6 +24,7 @@
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-remark": "^2.3.8",
     "gatsby-transformer-sharp": "^2.1.17",
+    "moment": "^2.24.0",
     "prismjs": "^1.16.0",
     "puppeteer": "^1.14.0",
     "react": "^16.8.6",
@@ -44,7 +44,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
