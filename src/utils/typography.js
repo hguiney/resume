@@ -32,6 +32,19 @@ USWebDesignStandards.overrideThemeStyles = ({ rhythm }, options, styles) => {
         display: `none`,
       },
     },
+    ".job-type": {
+      display: `inline-block`,
+      padding: `0 .5rem`,
+      borderRadius: `3rem`,
+      backgroundColor: `gray`,
+      color: `white`,
+    },
+    ".job-type.job-type--contract": {
+      backgroundColor: `orange`,
+    },
+    ".job-type.job-type--self": {
+      backgroundColor: `skyblue`,
+    }
   }
 }
 

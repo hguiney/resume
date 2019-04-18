@@ -1,5 +1,6 @@
 import React from "react"
 import { /*Link,*/ graphql } from "gatsby"
+import moment from "moment"
 
 import Layout from "../components/layout"
 import Toggle from "../components/toggle"
@@ -31,6 +32,26 @@ class Experience extends React.Component {
     }
   }
 
+  getDuration( startTime, endTime ) {
+    if ( !startTime ) {
+      throw new Error( 'startTime is required' )
+    }
+
+    startTime = moment( startTime )
+
+    if ( endTime ) {
+      endTime = moment( endTime )
+    } else {
+      endTime = moment()
+    }
+
+    return moment.duration( endTime.diff( startTime ) );
+  }
+
+  getTypeText( type ) {
+    return `${type.slice(0,1).toUpperCase()}${type.slice(1)}`
+  }
+
   render() {
     const { data } = this.props
     const siteMetadata = data.site.siteMetadata
@@ -45,7 +66,10 @@ class Experience extends React.Component {
           style={{ marginBottom: rhythm(1) }}
         />
         {posts.map(({ node }) => {
+          const { org, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
           const title = node.frontmatter.title || node.fields.slug
+          const timeOnJob = this.getDuration( node.frontmatter.startDate, node.frontmatter.endDate )
+
           return (
             <article key={node.fields.slug}>
               <header
@@ -58,20 +82,28 @@ class Experience extends React.Component {
                     marginBottom: rhythm(1 / 4),
                   }}
                 >
-                  <b>{title}</b>, {node.frontmatter.org}
+                  <b>{title}</b>, {org}
                 </h3>
-                <div>
-                  <time>
-                    <time dateTime={node.frontmatter.startDate}>
-                      {node.frontmatter.startDateFormatted}
-                    </time> – { node.frontmatter.endDate ?
-                      <time dateTime={node.frontmatter.endDate}>
-                        {node.frontmatter.endDateFormatted}
-                      </time> : 'Current'
-                    }
+                <div className="job-attributes">
+                  <span className={`job-type job-type--${type}`}>{this.getTypeText(type)}</span>
+                  <span style={{ margin: `0 .25rem` }}> </span>
+                  <time dateTime={timeOnJob.toISOString()}>
+                    <time dateTime={startDate}>
+                      {startDateFormatted}
+                    </time> – {
+                      endDate ?
+                      <time dateTime={endDate}>
+                        {endDateFormatted}
+                      </time>
+                      : 'Current'
+                    } <span className="duration-human">
+                      <span className="duration-human__paren">(</span>{
+                        timeOnJob.humanize()
+                      }<span className="duration-human__paren">)</span>
+                    </span>
                   </time>
                   <span style={{ margin: `0 .25rem` }}> • </span>
-                  <span>{node.frontmatter.remote ? 'Remote' : node.frontmatter.location}</span>
+                  <span>{remote ? 'Remote' : location}</span>
                 </div>
               </header>
               <div
@@ -125,6 +157,7 @@ export const pageQuery = graphql`
             org
             location
             remote
+            type
             title
             description
             roles

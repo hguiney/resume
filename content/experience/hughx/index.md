@@ -5,6 +5,7 @@ startDate: "2006-03"
 endDate:
 location: Boston, MA
 remote: true
+type: self
 roles: [
   'UI Design',
   'UX Design',
