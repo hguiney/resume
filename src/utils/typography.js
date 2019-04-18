@@ -1,7 +1,9 @@
 import Typography from "typography"
 import USWebDesignStandards from "typography-theme-us-web-design-standards"
 
-USWebDesignStandards.overrideThemeStyles = ({ rhythm }, options, styles) => {
+USWebDesignStandards.baseFontSize = 16
+
+USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
   return {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
@@ -35,29 +37,38 @@ USWebDesignStandards.overrideThemeStyles = ({ rhythm }, options, styles) => {
         padding: `0 !important`,
         margin: `0 auto !important`,
       },
+      ".experience-item": {
+        pageBreakInside: `avoid`,
+      },
     },
-    ".job-type": {
-      display: `inline-block`,
-      padding: `0 .5rem`,
-      borderRadius: `3rem`,
-      backgroundColor: `gray`,
-      color: `white`,
+    // ".job-type": {
+    //   display: `inline-block`,
+    //   padding: `0 .5rem`,
+    //   borderRadius: `3rem`,
+    //   backgroundColor: `gray`,
+    //   color: `white`,
+    // },
+    // ".job-type.job-type--contract": {
+    //   backgroundColor: `orange`,
+    // },
+    // ".job-type.job-type--self": {
+    //   backgroundColor: `skyblue`,
+    // },
+    ".bio__attribute": {
+      whiteSpace: `nowrap`,
     },
-    ".job-type.job-type--contract": {
-      backgroundColor: `orange`,
+    "p": {
+      maxWidth: `39em`,
     },
-    ".job-type.job-type--self": {
-      backgroundColor: `skyblue`,
-    }
   }
 }
 
 delete USWebDesignStandards.googleFonts
 
-const typography = new Typography(USWebDesignStandards)
+const typography = new Typography( USWebDesignStandards )
 
 // Hot reload typography in development.
-if (process.env.NODE_ENV !== `production`) {
+if ( process.env.NODE_ENV !== `production` ) {
   typography.injectStyles()
 }
 

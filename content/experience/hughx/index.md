@@ -1,11 +1,11 @@
 ---
-title: Founder (Consultant)
+title: Consultant
 org: hughx
 startDate: "2006-03"
 endDate:
 location: Boston, MA
 remote: true
-type: self
+type: self-employment
 roles: [
   'UI Design',
   'UX Design',

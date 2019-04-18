@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Bio from "./bio"
-import Toggle from "../components/toggle"
-import { rhythm, scale } from "../utils/typography"
+import Toggle from "./toggle"
+import { rhythm/*, scale*/ } from "../utils/typography"
 
 const VerbosityContext = React.createContext( {
   verbosity: 'short',
@@ -62,16 +62,20 @@ class Layout extends React.Component {
             </h1>
             <h2 style={{ marginBottom: rhythm(1/4) }}>{siteMetadata.jobTitle}</h2>
           </hgroup>
-          <Bio
-            showLocation
-            showPhoneNumber
-            showEmail
-            showPortfolio
-            showGithub
-            showStackoverflow
-            showLinkedin
-            showTwitter
-          />
+          <VerbosityContext.Consumer>{
+            ( { verbosity } ) =>
+              <Bio
+                showLocation={ verbosity === 'long' }
+                showPhoneNumber
+                showEmail
+                showPortfolio
+                showGithub
+                showStackoverflow
+                showLinkedin
+                showTwitter
+                showDescription={ verbosity === 'long' }
+              />
+          }</VerbosityContext.Consumer>
         </>
       )
     } else {
@@ -103,14 +107,17 @@ class Layout extends React.Component {
           style={ {
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            maxWidth: rhythm( 24 ),
+            minWidth: rhythm( 19 ),
+            padding: `${ rhythm( 1.5 ) } ${ rhythm( 3 / 4 ) }`,
           } }
         >
           <Toggle
             style={ { marginBottom: rhythm(1) } }
           />
-          <header>{ header }</header>
+          <header style={ {
+            textAlign: `center`,
+          } }>{ header }</header>
           <main>{ children }</main>
         </div>
       </VerbosityContext.Provider>

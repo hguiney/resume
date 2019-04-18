@@ -7,6 +7,7 @@ description: Hypervideo Markup Language, or HVML, is an open specification that 
 location: Boston, MA
 remote: true
 type: side-project
+parent: redblue
 roles: [
   'Language Design',
   'Specification Writing',

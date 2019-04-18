@@ -9,6 +9,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 // import Image from "gatsby-image"
 
+import TextSpacer from "./text-spacer"
 import { rhythm } from "../utils/typography"
 
 class Bio extends React.Component {
@@ -27,38 +28,57 @@ class Bio extends React.Component {
           } = data.site.siteMetadata
           const contactMethods = Object.keys( this.props )
             .map( ( prop ) => {
-              switch (prop) {
+              switch ( prop ) {
                 case 'showLocation':
-                  return `${location.city}, ${location.region}, ${location.country}`
+                  return !!this.props.showLocation && <span id="location" className="bio__attribute bio__attribute--location">{ location.city }, { location.region }, { location.country }</span>
                 case 'showPhoneNumber':
-                  return phoneNumber
+                  return !!this.props.phoneNumber && <span id="phone-number" className="bio__attribute bio__attribute--phone-number">phoneNumber</span>
                 case 'showEmail':
-                  return `<a href="mailto:${email}">${email}</a>`
+                  return !!this.props.showEmail && <a id="email" className="bio__attribute bio__attribute--email" href={ `mailto:${email}` }>{ email }</a>
                 case 'showPortfolio':
-                  return `<a href="${portfolioUrl}">Portfolio</a>`
+                  return !!this.props.showPortfolio && <a id="portfolio" className="bio__attribute bio__attribute--portfolio" href={ portfolioUrl }>Portfolio</a>
                 case 'showGithub':
-                  return `<a href="https://github.com/${social.github}">GitHub</a>`
+                  return !!this.props.showGithub && <a id="github" className="bio__attribute bio__attribute--github" href={ `https://github.com/${social.github}` }>GitHub</a>
                 case 'showStackoverflow':
-                  return `<a href="https://stackoverflow.com/users/${social.stackoverflow}">Stack Overflow</a>`
+                  return !!this.props.showStackoverflow && <a id="stackoverflow" className="bio__attribute bio__attribute--stackoverflow" href={ `https://stackoverflow.com/users/${social.stackoverflow}` }>Stack Overflow</a>
                 case 'showLinkedin':
-                  return `<a href="https://www.linkedin.com/in/${social.linkedin}">LinkedIn</a>`
+                  return !!this.props.showLinkedin && <a id="linkedin" className="bio__attribute bio__attribute--linkedin" href={ `https://www.linkedin.com/in/${social.linkedin}` }>LinkedIn</a>
                 case 'showTwitter':
-                  return `<a href="https://twitter.com/${social.twitter}">Twitter</a>`
+                  return !!this.props.showTwitter && <a id="twitter" className="bio__attribute bio__attribute--twitter" href={ `https://twitter.com/${social.twitter}` }>Twitter</a>
                 default:
                   // eslint-disable-next-line
                   return;
               }
             } )
             .filter( ( value ) => {
-              return ( typeof value !== 'undefined' )
+              return !!value
             } )
 
           return (
             <div>
-              <p hidden={!this.props.showDescription} style={{ marginBottom: rhythm(1 / 4) }}>{description}</p>
-              <p dangerouslySetInnerHTML={{
-                __html: contactMethods.join( ' • ' )
-              }} />
+              <p
+                hidden={ !this.props.showDescription }
+                style={ {
+                  marginBottom: rhythm( 1 / 4 ),
+                  marginLeft: `auto`,
+                  marginRight: `auto`,
+                } }
+              >{
+                description
+              }</p>
+              <p style={ {
+                marginLeft: `auto`,
+                marginRight: `auto`,
+              } }>{
+                contactMethods.map( ( contactMethod, index ) => {
+                  return (
+                    <span key={ contactMethod.props.id }>
+                      { contactMethod }
+                      { ( index !== contactMethods.length - 1 ) && <TextSpacer dot /> }
+                    </span>
+                  )
+                } )
+              }</p>
             </div>
           )
         } }

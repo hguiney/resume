@@ -12,7 +12,14 @@ class Toggle extends React.Component {
     return (
       <VerbosityContext.Consumer>{
         ( { verbosity, setVerbosity } ) => (
-          <div id="toggle" style={ this.props.style } onClick={ ( event ) => setVerbosity( event ) }>
+          <div
+            id="toggle"
+            style={ {
+              textAlign: `center`,
+              ...this.props.style
+            } }
+            onClick={ ( event ) => setVerbosity( event ) }
+          >
             <button disabled={ verbosity === 'short' }>Short form</button>
             <button disabled={ verbosity === 'long' }>Long form</button>
           </div>
