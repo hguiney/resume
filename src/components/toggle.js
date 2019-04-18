@@ -1,11 +1,24 @@
 import React from "react"
+import { VerbosityContext } from "./layout"
 
 class Toggle extends React.Component {
+  constructor( props ) {
+    super( props );
+
+    this.state = {}
+  }
+
   render() {
-    return ( <div id="toggle" style={ this.props.style } onClick={ this.props.onToggle }>
-      <button disabled={ this.props.form === 'short' }>Short form</button>
-      <button disabled={ this.props.form === 'long' }>Long form</button>
-    </div> )
+    return (
+      <VerbosityContext.Consumer>{
+        ( { verbosity, setVerbosity } ) => (
+          <div id="toggle" style={ this.props.style } onClick={ ( event ) => setVerbosity( event ) }>
+            <button disabled={ verbosity === 'short' }>Short form</button>
+            <button disabled={ verbosity === 'long' }>Long form</button>
+          </div>
+        )
+      }</VerbosityContext.Consumer>
+    )
   }
 }
 

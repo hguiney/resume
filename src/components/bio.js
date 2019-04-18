@@ -55,7 +55,7 @@ class Bio extends React.Component {
 
           return (
             <div>
-              <p style={{ marginBottom: rhythm(1 / 4) }}>{description}</p>
+              <p hidden={!this.props.showDescription} style={{ marginBottom: rhythm(1 / 4) }}>{description}</p>
               <p dangerouslySetInnerHTML={{
                 __html: contactMethods.join( ' • ' )
               }} />
