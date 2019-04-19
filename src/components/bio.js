@@ -22,7 +22,6 @@ class Bio extends React.Component {
             description,
             email,
             portfolioUrl,
-            phoneNumber,
             location,
             social,
           } = data.site.siteMetadata

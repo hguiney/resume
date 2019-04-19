@@ -63,9 +63,10 @@ class Experience extends React.Component {
         state.fusions[postId].node = node
         state.fusions[postId].result = node
       } else if ( node.frontmatter.parent ) {
-        state.fusions[node.frontmatter.parent] = state.fusions[node.frontmatter.parent] || {}
-        state.fusions[node.frontmatter.parent].candidates = state.fusions[node.frontmatter.parent].candidates || []
-        state.fusions[node.frontmatter.parent].candidates.push( node )
+        const parent = node.frontmatter.parent
+        state.fusions[parent] = state.fusions[parent] || {}
+        state.fusions[parent].candidates = state.fusions[parent].candidates || []
+        state.fusions[parent].candidates.push( node )
       }
     } )
 
@@ -80,7 +81,7 @@ class Experience extends React.Component {
       } )
     } )
 
-    // this.setState( state )
+    // eslint-disable-next-line
     this.state = state
   }
   //
@@ -169,7 +170,12 @@ class Experience extends React.Component {
                           </span>
                         </time>
                         <TextSpacer dot />
-                        <span>{ remote ? 'Remote' : location }</span>
+                        <span>{
+                          ( remote === null ) ?
+                          `Remote / ${location}` : (
+                            remote ? 'Remote' : location
+                          )
+                        }</span>
                       </div>
                     </header>
                     <div

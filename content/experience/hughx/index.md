@@ -4,7 +4,7 @@ org: hughx
 startDate: "2006-03"
 endDate:
 location: Boston, MA
-remote: true
+remote: null
 type: self-employment
 roles: [
   'UI Design',
