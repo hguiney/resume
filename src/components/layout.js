@@ -38,7 +38,7 @@ class Layout extends React.Component {
 
   render() {
     const { location, siteMetadata, children } = this.props
-    const title = siteMetadata.title
+    const title = siteMetadata ? siteMetadata.title : ''
     const rootPath = `${__PATH_PREFIX__}/`
     let header
 
