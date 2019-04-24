@@ -1,7 +1,7 @@
 import Typography from "typography"
 import USWebDesignStandards from "typography-theme-us-web-design-standards"
 
-USWebDesignStandards.baseFontSize = 16
+USWebDesignStandards.baseFontSize = 14
 
 USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
   return {
@@ -12,7 +12,12 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       color: styles.a.color,
     },
     "h3": {
+      fontSize: rhythm(1/1.374),
       fontWeight: `normal`,
+      marginBottom: rhythm(1 / 4),
+    },
+    ".org": {
+      // whiteSpace: `nowrap`,
     },
     "article p:last-child": {
       marginBottom: 0,
@@ -23,7 +28,13 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       width: `9%`,
       margin: 0,
     },
-    "dd": {
+    // "li, dd": {
+    //
+    // },
+    "ul": {
+      marginLeft: 0,
+    },
+    "li, dd": {
       display: `inline-block`,
       verticalAlign: `top`,
       width: `90%`,
@@ -60,6 +71,22 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
     "p": {
       maxWidth: `39em`,
     },
+    ".columns": {
+      display: `flex`,
+      flexDirection: `row-reverse`,
+    },
+    // "aside": {
+    //
+    // },
+    "aside > h3": {
+      fontWeight: `bold`,
+    },
+    // "main": {
+    //   minWidth: rhythm(5),
+    // }
+    // "aside, main": {
+    //   display
+    // },
   }
 }
 

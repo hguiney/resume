@@ -15,7 +15,7 @@ class Layout extends React.Component {
     super( props );
 
     this.state = {
-      verbosity: 'long',
+      verbosity: 'short',
       setVerbosity: this.setVerbosity.bind( this )
     }
   }
@@ -107,7 +107,7 @@ class Layout extends React.Component {
           style={ {
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm( 24 ),
+            maxWidth: rhythm( 36 ),
             minWidth: rhythm( 19 ),
             padding: `${ rhythm( 1.5 ) } ${ rhythm( 3 / 4 ) }`,
           } }
@@ -118,7 +118,37 @@ class Layout extends React.Component {
           <header style={ {
             textAlign: `center`,
           } }>{ header }</header>
-          <main>{ children }</main>
+          <div class="columns">
+            <aside style={ {
+              width: rhythm(53),
+              marginLeft: rhythm(1.5),
+              fontSize: rhythm(1/1.6)
+            } }>
+              <h3>Top Tech</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript (ES6+)</li>
+              </ul>
+
+              <h3>Languages</h3>
+              <ul>
+                <li>English (Native)</li>
+                <li>Japanese (Elementary)</li>
+              </ul>
+
+              <h3>Honors &amp; Awards</h3>
+              <ul>
+                <li>Runner-Up, TechCrunch Disrupt NY Hackathon 2017</li>
+              </ul>
+
+              <h3>Other Training</h3>
+              <ul>
+                <li>Improvisational Theater, ImprovBoston Comedy School</li>
+              </ul>
+            </aside>
+            <main>{ children }</main>
+          </div>
         </div>
       </VerbosityContext.Provider>
     )

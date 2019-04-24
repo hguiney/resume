@@ -10,6 +10,8 @@ import TextSpacer from "../components/text-spacer"
 class Experience extends React.Component {
   static contextType = VerbosityContext;
 
+  static sections = ['roles', 'tech', 'tools'];
+
   constructor( props ) {
     super( props )
 
@@ -72,7 +74,7 @@ class Experience extends React.Component {
 
     Object.keys( state.fusions ).forEach( ( fusion ) => {
       state.fusions[fusion].candidates.forEach( ( candidate ) => {
-        [ 'roles', 'tech', 'tools', ].forEach( ( field ) => {
+        Experience.sections.forEach( ( field ) => {
           const existing = state.fusions[fusion].node.frontmatter[field]
           const toCombine = candidate.frontmatter[field]
           const combined = existing.concat( toCombine )
@@ -105,10 +107,13 @@ class Experience extends React.Component {
     } )
   }
 
+  alphabetize( a, b ) {
+    return a.localeCompare( b );
+  }
+
   render() {
     const { data } = this.props
     const siteMetadata = data.site.siteMetadata
-
 
     return (
       <Layout location={ this.props.location } siteMetadata={ siteMetadata }>
@@ -134,6 +139,10 @@ class Experience extends React.Component {
                 const title = node.frontmatter.title || node.fields.slug
                 const timeOnJob = this.getDuration( node.frontmatter.startDate, node.frontmatter.endDate )
 
+                Experience.sections.forEach( ( section ) => {
+                  node.frontmatter[section].sort( this.alphabetize )
+                } )
+
                 return (
                   <article
                     key={ this.getBareSlug( node.fields.slug ) }
@@ -149,7 +158,7 @@ class Experience extends React.Component {
                           marginBottom: rhythm(1 / 4),
                         }}
                       >
-                        <b>{title}</b>, {org}
+                        <b class="title">{title}</b>, <span class="org">{org}</span>
                       </h3>
                       <div className="job-attributes">
                         <span className={ `job-type job-type--${type}` }>{ this.getTypeText( type ) }</span>
@@ -165,7 +174,7 @@ class Experience extends React.Component {
                             : 'Current'
                           } <span className="duration-human">
                             <span className="duration-human__paren">(</span>{
-                              timeOnJob.humanize()
+                              timeOnJob.humanize().replace( 'a month', '1 month' )
                             }<span className="duration-human__paren">)</span>
                           </span>
                         </time>
@@ -189,9 +198,15 @@ class Experience extends React.Component {
                     />
                     <footer>
                       <dl>
-                        {node.frontmatter.roles && <><dt>Roles</dt> <dd>{node.frontmatter.roles.join( ', ' )}</dd></>}
-                        {node.frontmatter.tech && <><dt>Tech</dt> <dd>{node.frontmatter.tech.join( ', ' )}</dd></>}
-                        {node.frontmatter.tools && <><dt>Tools</dt> <dd>{node.frontmatter.tools.join( ', ' )}</dd></>}
+                        {node.frontmatter.roles && <><dt>Roles</dt> <dd>{ node.frontmatter.roles.join( ', ' )}</dd></>}
+                        {node.frontmatter.tech && <><dt>Tech</dt> <dd>{ node.frontmatter.tech.join( ', ' )}</dd></>}
+                        {node.frontmatter.tools && <><dt>Tools</dt> <dd>{
+                          // Strip version numbers which are no longer relevant
+                          // without deleting version information on the backend
+                          node.frontmatter.tools.map(
+                            tool => tool.replace( /(Sublime Text|Twitter Bootstrap|ZURB Foundation) [0-9]+/i, '$1' )
+                          ).join( ', ' )
+                        }</dd></> }
                       </dl>
                     </footer>
                   </article>
