@@ -18,7 +18,7 @@ tech: [
 ]
 tools: [
   'Polymer',
-  'Github',
+  'GitHub',
   'NPM',
   'Bower',
   'Gulp',

@@ -7,43 +7,57 @@ location: Boston, MA
 remote: null
 type: self-employment
 roles: [
+  'API Design',
   'UI Design',
   'UX Design',
-  'Frontend Development',
-  'Backend Development',
+  'Front-end Development',
+  'Back-end Development',
   'Identity Design',
   'Information Architecture',
   'Content Strategy',
   'Content Production',
   'Maintenance',
+  'Requirements Gathering',
+  'Contract Negotiation',
 ]
 tech: [
   'HTML5',
   'CSS3',
   'JavaScript (ES6+)',
+  'Web Components',
   'AJAX',
   'Responsive Design',
   'PHP',
   'Git',
+  'GraphQL',
   'SVG',
   'XML',
-  'XQuery',
   'RDFa',
   'Microdata',
   'WAI-ARIA',
   'Regular Expressions',
+  'HTTP',
+  'REST',
 ]
 tools: [
   'Node.js',
-  'NPM',
   'React',
-  'React Native',
+  'Gatsby',
   'Vue.js',
+  'Polymer',
   'Electron',
+  'ESLint',
+  'Jest',
+  'Istanbul',
+  'Travis CI',
+  'Codecov',
   'GitHub',
+  'NPM',
+  'Yarn',
   'Atom',
   'Photoshop',
-  'Illustrator'
+  'Illustrator',
+  'Premiere Pro',
 ]
 ---
 

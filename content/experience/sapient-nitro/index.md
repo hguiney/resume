@@ -3,12 +3,12 @@ title: Senior Web Developer
 org: SapientNitro
 location: Boston, MA
 startDate: "2013-08"
-endDate: "2013-11"
+endDate: "2013-12"
 type: contract
 remote: false
 description: Built mobile application front-end for The Hartford.
 roles: [
-  'Frontend Development',
+  'Front-end Development',
 ]
 tech: [
   'HTML5',
