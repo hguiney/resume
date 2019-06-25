@@ -19,6 +19,7 @@ roles: [
   'Maintenance',
   'Requirements Gathering',
   'Contract Negotiation',
+  'System Administration',
 ]
 tech: [
   'HTML5',
@@ -58,6 +59,7 @@ tools: [
   'Photoshop',
   'Illustrator',
   'Premiere Pro',
+  'Arch Linux',
 ]
 ---
 

@@ -158,7 +158,7 @@ class Experience extends React.Component {
                           marginBottom: rhythm(1 / 4),
                         }}
                       >
-                        <b class="title">{title}</b>, <span class="org">{org}</span>
+                        <b className="title">{title}</b>, <span className="org">{org}</span>
                       </h3>
                       <div className="job-attributes">
                         <span className={ `job-type job-type--${type}` }>{ this.getTypeText( type ) }</span>

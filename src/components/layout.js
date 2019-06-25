@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 
 import Bio from "./bio"
 import Toggle from "./toggle"
+import SaveAs from "./save-as"
 import { rhythm/*, scale*/ } from "../utils/typography"
 
 const VerbosityContext = React.createContext( {
@@ -115,10 +116,11 @@ class Layout extends React.Component {
           <Toggle
             style={ { marginBottom: rhythm(1) } }
           />
+          <SaveAs />
           <header style={ {
             textAlign: `center`,
           } }>{ header }</header>
-          <div class="columns">
+          <div className="columns">
             <aside style={ {
               width: rhythm(53),
               marginLeft: rhythm(1.5),
