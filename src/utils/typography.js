@@ -44,6 +44,9 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       "#toggle": {
         display: `none`,
       },
+      "#save-as": {
+        display: `none`,
+      },
       "#page": {
         padding: `0 !important`,
         margin: `0 auto !important`,

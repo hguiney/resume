@@ -1,6 +1,7 @@
 import React from "react"
 import { /*Link,*/ graphql } from "gatsby"
 import moment from "moment"
+// import 'moment-precise-range-plugin';
 
 import { Layout, VerbosityContext } from "../components/layout"
 import SEO from "../components/seo"
@@ -11,6 +12,7 @@ class Experience extends React.Component {
   static contextType = VerbosityContext;
 
   static sections = ['roles', 'tech', 'tools'];
+  static clipLargeDurations = true;
 
   constructor( props ) {
     super( props )
@@ -19,8 +21,9 @@ class Experience extends React.Component {
       fusions: {},
     }
 
-    this.fusePosts = this.fusePosts.bind( this )
+    moment.relativeTimeRounding( Math.ceil )
 
+    this.fusePosts = this.fusePosts.bind( this )
     this.fusePosts( props.data.allMarkdownRemark.edges )
   }
 
@@ -37,7 +40,13 @@ class Experience extends React.Component {
       endTime = moment()
     }
 
-    return moment.duration( endTime.diff( startTime ) );
+    const duration = endTime.diff( startTime )
+
+    return {
+      duration,
+      "imprecise": moment.duration( duration ),
+      // "precise": moment.preciseDiff( startTime, endTime ),
+    };
   }
 
   getTypeText( type ) {
@@ -111,6 +120,21 @@ class Experience extends React.Component {
     return a.localeCompare( b );
   }
 
+  printTime( durationObject ) {
+    let humanized = durationObject.imprecise.humanize().replace( /a (second|minute|hour|day|week|month|year)/i, '1 $1' )
+    const split = humanized.split( ' ' );
+
+    if ( Experience.clipLargeDurations && split[1] === 'years' ) {
+      let number = parseInt( split[0], 10 );
+      
+      if ( number > 10 ) {
+        humanized = `10+ years`;
+      }
+    }
+
+    return humanized;
+  }
+
   render() {
     const { data } = this.props
     const siteMetadata = data.site.siteMetadata
@@ -163,7 +187,7 @@ class Experience extends React.Component {
                       <div className="job-attributes">
                         <span className={ `job-type job-type--${type}` }>{ this.getTypeText( type ) }</span>
                         <TextSpacer dot />
-                        <time dateTime={ timeOnJob.toISOString() }>
+                        <time dateTime={ timeOnJob.imprecise.toISOString() }>
                           <time dateTime={ startDate }>
                             { startDateFormatted }
                           </time> – {
@@ -174,7 +198,7 @@ class Experience extends React.Component {
                             : 'Current'
                           } <span className="duration-human">
                             <span className="duration-human__paren">(</span>{
-                              timeOnJob.humanize().replace( 'a month', '1 month' )
+                              this.printTime( timeOnJob )
                             }<span className="duration-human__paren">)</span>
                           </span>
                         </time>

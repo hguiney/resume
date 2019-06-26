@@ -1,5 +1,5 @@
 ---
-title: Senior Web Developer
+title: Senior Front-end Developer
 org: Turbine
 startDate: "2013-12"
 endDate: "2014-01"

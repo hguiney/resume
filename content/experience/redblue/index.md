@@ -1,7 +1,8 @@
 ---
 title: Open-Source Maintainer
 org: RedBlue
-startDate: "2014-07"
+# startDate: "2014-07"
+startDate: "2016-05"
 endDate:
 description: JavaScript video player that implements HVML annotations (see below). Allows content producers to create “hypervideo” (interactive online video), such as choose-your-own-story films.
 location: Boston, MA

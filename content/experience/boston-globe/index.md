@@ -1,5 +1,5 @@
 ---
-title: UI/UX Designer, Full-stack Developer
+title: Senior Front-end Developer
 org: The Boston Globe
 startDate: "2014-06"
 endDate: "2014-11"

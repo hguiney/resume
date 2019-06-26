@@ -1,5 +1,5 @@
 ---
-title: Senior Web Developer
+title: Senior Front-end Developer
 org: SapientNitro
 location: Boston, MA
 startDate: "2013-08"
