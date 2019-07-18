@@ -164,7 +164,10 @@ class Experience extends React.Component {
                 const timeOnJob = this.getDuration( node.frontmatter.startDate, node.frontmatter.endDate )
 
                 Experience.sections.forEach( ( section ) => {
-                  node.frontmatter[section].sort( this.alphabetize )
+                  node.frontmatter[section]
+                    // Remove duplicates
+                    .filter( ( item, index ) => node.frontmatter[section].indexOf( item ) === index )
+                    .sort( this.alphabetize )
                 } )
 
                 return (

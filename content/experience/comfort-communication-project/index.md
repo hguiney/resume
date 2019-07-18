@@ -22,8 +22,7 @@ tools: [
   'NPM',
   'Bower',
   'Gulp',
-  'Sublime Text 3',
-  'GitHub'
+  'Sublime Text 3'
 ]
 ---
 
