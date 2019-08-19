@@ -60,6 +60,7 @@ tools: [
   'Illustrator',
   'Premiere Pro',
   'Arch Linux',
+  'styled-components',
 ]
 ---
 
