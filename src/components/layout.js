@@ -139,6 +139,11 @@ class Layout extends React.Component {
                 <li>Japanese (Elementary)</li>
               </ul>
 
+              <h3>Certifications</h3>
+              <ul>
+                <li>CodementorX Certified Developer</li>
+              </ul>
+
               <h3>Honors &amp; Awards</h3>
               <ul>
                 <li>Runner-Up, TechCrunch Disrupt NY Hackathon 2017</li>
