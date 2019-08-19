@@ -6,6 +6,7 @@ endDate: "2016-04"
 description: Provided additional capacity to non-profit humanitarian org. Helped build componentized UI as part of transition from print-only to web-first publication, w/focus on elegant reading experience, social engagement, driving donations. Advised in-house team on responsive best practices and design/development workflow.
 location: Boston, MA
 remote: false
+defaultDisplay: true
 type: contract
 roles: [
   'UI Design',

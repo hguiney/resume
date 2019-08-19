@@ -5,6 +5,7 @@ startDate: "2006-03"
 endDate:
 location: Boston, MA
 remote: null
+defaultDisplay: true
 type: self-employment
 roles: [
   'API Design',
@@ -61,6 +62,9 @@ tools: [
   'Premiere Pro',
   'Arch Linux',
   'styled-components',
+  'Slack',
+  'Trello',
+  'BEM',
 ]
 ---
 

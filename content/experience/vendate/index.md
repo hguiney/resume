@@ -6,6 +6,7 @@ endDate: "2016-01"
 description: Built premiere web app for startup allowing engaged couples and wedding vendors to easily find each other.
 location: Boston, MA
 remote: true
+defaultDisplay: true
 type: contract
 roles: [
   'UI Design',

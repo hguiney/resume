@@ -22,6 +22,34 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
     "article p:last-child": {
       marginBottom: 0,
     },
+    ".experience-item": {
+      position: "relative",
+    },
+    ".experience-item.experience-item--collapsed": {
+      opacity: 0.5,
+      marginBottom: "1.53rem",
+      cursor: "default",
+    },
+    ".experience-item.experience-item--collapsed > footer": {
+      display: "none"
+    },
+    ".toggle-experience": {
+      position: "absolute",
+      left: "-3rem",
+      borderRadius: "1rem",
+      height: "2rem",
+      width: "2rem",
+      top: 0,
+      textAlign: "center",
+      padding: 0,
+      justifyContent: "center",
+      display: "flex",
+      alignItems: "center",
+      fontFamily: "monospace",
+    },
+    // ".toggle-experience:active": {
+    //   outline: "none",
+    // },
     "dt": {
       display: `inline-block`,
       verticalAlign: `top`,
@@ -53,6 +81,12 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       },
       ".experience-item": {
         pageBreakInside: `avoid`,
+      },
+      ".experience-item.experience-item--collapsed": {
+        display: `none`,
+      },
+      ".toggle-experience": {
+        display: `none`,
       },
     },
     // ".job-type": {

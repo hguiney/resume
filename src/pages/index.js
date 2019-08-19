@@ -13,13 +13,20 @@ class Experience extends React.Component {
 
   static sections = ['roles', 'tech', 'tools'];
   static clipLargeDurations = true;
+  static clipSmallDurations = true;
 
   constructor( props ) {
     super( props )
 
     this.state = {
       fusions: {},
+      display: {},
     }
+    
+    props.data.allMarkdownRemark.edges.forEach( ( { node } ) => {
+      // eslint-disable-next-line
+      this.state.display[node.fields.slug] = node.frontmatter.defaultDisplay;
+    } )
 
     moment.relativeTimeRounding( Math.ceil )
 
@@ -93,7 +100,10 @@ class Experience extends React.Component {
     } )
 
     // eslint-disable-next-line
-    this.state = state
+    this.state = {
+      ...this.state,
+      state,
+    }
   }
   //
   // unfusePosts() {
@@ -120,12 +130,19 @@ class Experience extends React.Component {
     return a.localeCompare( b );
   }
 
-  printTime( durationObject ) {
-    let humanized = durationObject.imprecise.humanize().replace( /a (second|minute|hour|day|week|month|year)/i, '1 $1' )
-    const split = humanized.split( ' ' );
+  getRelativeTime( durationObject ) {
+    return (
+      durationObject.imprecise.humanize()
+        .replace( /a (second|minute|hour|day|week|month|year)/i, '1 $1' )
+        .split( ' ' )
+    )
+  }
 
-    if ( Experience.clipLargeDurations && split[1] === 'years' ) {
-      let number = parseInt( split[0], 10 );
+  printTime( relativeTime ) {
+    let humanized = relativeTime.join( ' ' );
+
+    if ( Experience.clipLargeDurations && relativeTime[1] === 'years' ) {
+      let number = parseInt( relativeTime[0], 10 );
       
       if ( number > 10 ) {
         humanized = `10+ years`;
@@ -138,6 +155,15 @@ class Experience extends React.Component {
   render() {
     const { data } = this.props
     const siteMetadata = data.site.siteMetadata
+    const toggleDisplay = ( slug ) => {
+      const state = {
+        ...this.state,
+      };
+
+      state.display[slug] = !state.display[slug];
+
+      this.setState( state );
+    }
 
     return (
       <Layout location={ this.props.location } siteMetadata={ siteMetadata }>
@@ -158,10 +184,10 @@ class Experience extends React.Component {
             }
 
             return (
-              posts.map( ( { node } ) => {
+              posts.map( ( { node }, index ) => {
                 const { org, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
                 const title = node.frontmatter.title || node.fields.slug
-                const timeOnJob = this.getDuration( node.frontmatter.startDate, node.frontmatter.endDate )
+                const timeOnJob = this.getDuration( startDate, endDate )
 
                 Experience.sections.forEach( ( section ) => {
                   node.frontmatter[section] = node.frontmatter[section]
@@ -170,11 +196,21 @@ class Experience extends React.Component {
                     .sort( this.alphabetize )
                 } )
 
+                const relativeTime = this.getRelativeTime( timeOnJob )
+                const bareSlug = this.getBareSlug( node.fields.slug )
+
                 return (
                   <article
-                    key={ this.getBareSlug( node.fields.slug ) }
-                    className="experience-item"
+                    id={ bareSlug }
+                    key={ bareSlug }
+                    className={ `experience-item${!this.state.display[node.fields.slug] ? ' experience-item--collapsed' : ''}` }
                   >
+                    <button
+                      className="toggle-experience"
+                      onClick={ () => toggleDisplay( node.fields.slug ) }
+                    >
+                      <span>{ this.state.display[node.fields.slug] ? '-' : '+' }</span>
+                    </button>
                     <header
                       style={{
                         marginBottom: rhythm(1 / 4),
@@ -199,11 +235,18 @@ class Experience extends React.Component {
                               { endDateFormatted }
                             </time>
                             : 'Current'
-                          } <span className="duration-human">
-                            <span className="duration-human__paren">(</span>{
-                              this.printTime( timeOnJob )
-                            }<span className="duration-human__paren">)</span>
-                          </span>
+                          }{
+                            ( relativeTime[1] !== 'days' )
+                            && ( relativeTime[1] !== 'weeks' )
+                            && <>
+                              {` `}
+                              <span className="duration-human">
+                                <span className="duration-human__paren">(</span>{
+                                  this.printTime( relativeTime )
+                                }<span className="duration-human__paren">)</span>
+                              </span>
+                            </>
+                          }
                         </time>
                         <TextSpacer dot />
                         <span>{
@@ -231,7 +274,9 @@ class Experience extends React.Component {
                           // Strip version numbers which are no longer relevant
                           // without deleting version information on the backend
                           node.frontmatter.tools.map(
-                            tool => tool.replace( /(Sublime Text|Twitter Bootstrap|ZURB Foundation) [0-9]+/i, '$1' )
+                            tool => tool
+                              .replace( /(Sublime Text|Twitter Bootstrap|ZURB Foundation) [0-9]+/i, '$1' )
+                              .replace( 'Twitter Bootstrap', 'Bootstrap' )
                           ).join( ', ' )
                         }</dd></> }
                       </dl>
@@ -279,6 +324,7 @@ export const pageQuery = graphql`
             org
             location
             remote
+            defaultDisplay
             type
             title
             description

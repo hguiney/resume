@@ -6,6 +6,7 @@ endDate: "2017-11"
 description: Helped clear backlog of bugs and features for video transcription product used by over 2,500 customers including Procter & Gamble, T-Mobile, and MIT.
 location: Boston, MA
 remote: false
+defaultDisplay: true
 type: contract
 roles: [
   'Front-end Development',

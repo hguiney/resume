@@ -7,6 +7,7 @@ endDate:
 description: JavaScript video player that implements HVML annotations (see below). Allows content producers to create “hypervideo” (interactive online video), such as choose-your-own-story films.
 location: Boston, MA
 remote: true
+defaultDisplay: true
 type: side-project
 fusible: true
 roles: [
@@ -42,6 +43,9 @@ tools: [
   'NPM',
   'Yarn',
   'Facebook Ads',
+  'Slack',
+  'Trello',
+  'BEM',
 ]
 
 ---
