@@ -7,7 +7,7 @@ import SaveAs from "./save-as"
 import { rhythm/*, scale*/ } from "../utils/typography"
 
 const VerbosityContext = React.createContext( {
-  verbosity: 'short',
+  verbosity: 'Résumé',
   setVerbosity: () => {},
 } );
 
@@ -16,25 +16,108 @@ class Layout extends React.Component {
     super( props );
 
     this.state = {
-      verbosity: 'short',
-      setVerbosity: this.setVerbosity.bind( this )
+      verbosity: 'Résumé',
+      setVerbosity: this.setVerbosity.bind( this ),
+      display: {},
+      toggleCustomExperienceVisibility: ( slug ) => {
+        const newState = {
+          ...this.state
+        }
+        const newVisibility = !newState.display[slug].current
+
+        newState.display[slug].current = newVisibility
+        newState.display[slug].user = newVisibility
+
+        this.setState( newState )
+      }
     }
+
+    // console.log( props )
+
+    this._setInitialExperienceVisibility( props.posts )
+  }
+
+  modifyAllExperienceVisibility( newState, fields, mode ) {
+    if ( typeof fields === 'string' ) {
+      fields = [fields]
+    }
+
+    switch ( mode ) {
+      case 'on':
+        mode = true
+      break
+
+      case 'off':
+        mode = false
+      break
+
+      case 'restore':
+        break
+
+      case 'toggle':
+        break
+
+      default:
+        mode = !!mode
+    }
+
+    Object.keys( this.state.display ).forEach( ( slug ) => {
+      // eslint-disable-next-line
+      fields.forEach( ( field ) => {
+        if ( mode === 'restore' ) {
+          newState.display[slug][field] = this.state.display[slug].user
+        } else if ( mode === 'toggle' ) {
+          if ( field === 'user' ) {
+            const toggled = !this.state.display[slug].current
+            newState.display[slug].user = toggled
+            newState.display[slug].current = toggled
+          } else {
+            newState.display[slug][field] = !this.state.display[slug][field]
+          }
+        } else {
+          newState.display[slug][field] = mode
+        }
+      } )
+    } )
+
+    return newState
+  }
+
+  _setInitialExperienceVisibility( edges ) {
+    edges.forEach( ( { node } ) => {
+      const defaultDisplay = node.frontmatter.defaultDisplay;
+
+      // eslint-disable-next-line
+      this.state.display[node.fields.slug] = {
+        default: defaultDisplay,
+        user: defaultDisplay,
+        current: defaultDisplay,
+      }
+    } )
   }
 
   setVerbosity( event ) {
-    const form = event.target.textContent.toLowerCase()
-
-    if ( form === 'short form' ) {
-      this.setState( previousState => ( {
-        ...previousState,
-        verbosity: 'short',
-      } ) )
-    } else {
-      this.setState( previousState => ( {
-        ...previousState,
-        verbosity: 'long',
-      } ) )
+    const verbosity = event.target.textContent
+    let newState = {
+      ...this.state
     }
+
+    switch ( verbosity ) {
+      case 'Curriculum Vitæ':
+        newState = this.modifyAllExperienceVisibility( newState, 'current', 'on' )
+      break
+
+      case 'Résumé':
+      default:
+        newState = this.modifyAllExperienceVisibility( newState, 'current', 'restore' )
+      break
+    }
+
+    this.setState( previousState => ( {
+      ...previousState,
+      ...newState,
+      verbosity,
+    } ) )
   }
 
   render() {
@@ -66,7 +149,7 @@ class Layout extends React.Component {
           <VerbosityContext.Consumer>{
             ( { verbosity } ) =>
               <Bio
-                showLocation={ verbosity === 'long' }
+                showLocation={ verbosity === 'Curriculum Vitæ' }
                 showPhoneNumber
                 showEmail
                 showPortfolio
@@ -74,7 +157,7 @@ class Layout extends React.Component {
                 showStackoverflow
                 showLinkedin
                 showTwitter
-                showDescription={ verbosity === 'long' }
+                showDescription={ verbosity === 'Curriculum Vitæ' }
               />
           }</VerbosityContext.Consumer>
         </>
@@ -113,10 +196,19 @@ class Layout extends React.Component {
             padding: `${ rhythm( 1.5 ) } ${ rhythm( 3 / 4 ) }`,
           } }
         >
-          <Toggle
-            style={ { marginBottom: rhythm(1) } }
-          />
-          <SaveAs />
+          <menu style={ {
+            paddingLeft: 0,
+            textAlign: "center",
+            display: "flex",
+            justifyContent: "space-between",
+            width: "29rem",
+            margin: "0 auto",
+          } }>
+            <Toggle
+              style={ { marginBottom: rhythm(1) } }
+            />
+            <SaveAs />
+          </menu>
           <header style={ {
             textAlign: `center`,
           } }>{ header }</header>

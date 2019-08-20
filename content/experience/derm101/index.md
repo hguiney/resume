@@ -3,6 +3,7 @@ title: Senior Full-stack Developer
 org: Derm101
 startDate: "2018-04"
 endDate: "2018-05-22"
+description: Improved load time performance of WordPress subscription site.
 location: New York, NY
 remote: true
 defaultDisplay: false
@@ -24,5 +25,3 @@ tools: [
   'Google Analytics'
 ]
 ---
-
-Implemented new UI for startup’s building management software.

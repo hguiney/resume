@@ -33,15 +33,19 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
     ".experience-item.experience-item--collapsed > footer": {
       display: "none"
     },
+    "button": {
+      borderRadius: "1.5rem",
+      padding: ".5rem 1rem",
+    },
     ".toggle-experience": {
       position: "absolute",
       left: "-3rem",
-      borderRadius: "1rem",
+      // borderRadius: "1rem",
       height: "2rem",
       width: "2rem",
       top: 0,
-      textAlign: "center",
       padding: 0,
+      textAlign: "center",
       justifyContent: "center",
       display: "flex",
       alignItems: "center",

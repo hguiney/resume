@@ -9,6 +9,9 @@ class Toggle extends React.Component {
   }
 
   render() {
+    const resumeText = 'Résumé'
+    const cvText = 'Curriculum Vitæ'
+
     return (
       <VerbosityContext.Consumer>{
         ( { verbosity, setVerbosity } ) => (
@@ -20,8 +23,19 @@ class Toggle extends React.Component {
             } }
             onClick={ ( event ) => setVerbosity( event ) }
           >
-            <button disabled={ verbosity === 'short' }>Short form</button>
-            <button disabled={ verbosity === 'long' }>Long form</button>
+            <button
+              disabled={ verbosity === resumeText }
+              style={ {
+                borderTopRightRadius: 0,
+                borderBottomRightRadius: 0
+              } }>{ resumeText }</button>
+            <button
+              disabled={ verbosity === cvText }
+              style={ {
+                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: 0,
+                borderLeftWidth: 0,
+              } }>{ cvText }</button>
           </div>
         )
       }</VerbosityContext.Consumer>

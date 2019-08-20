@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import TextSpacer from "../components/text-spacer"
 
-class Experience extends React.Component {
+class Experience extends React.PureComponent {
   static contextType = VerbosityContext;
 
   static sections = ['roles', 'tech', 'tools'];
@@ -20,13 +20,7 @@ class Experience extends React.Component {
 
     this.state = {
       fusions: {},
-      display: {},
     }
-    
-    props.data.allMarkdownRemark.edges.forEach( ( { node } ) => {
-      // eslint-disable-next-line
-      this.state.display[node.fields.slug] = node.frontmatter.defaultDisplay;
-    } )
 
     moment.relativeTimeRounding( Math.ceil )
 
@@ -102,7 +96,7 @@ class Experience extends React.Component {
     // eslint-disable-next-line
     this.state = {
       ...this.state,
-      state,
+      ...state,
     }
   }
   //
@@ -155,36 +149,34 @@ class Experience extends React.Component {
   render() {
     const { data } = this.props
     const siteMetadata = data.site.siteMetadata
-    const toggleDisplay = ( slug ) => {
-      const state = {
-        ...this.state,
-      };
+    // const toggleDisplay = ( slug, display ) => {
 
-      state.display[slug] = !state.display[slug];
 
-      this.setState( state );
-    }
+    //   console.log( display[slug] )
+    // }
 
     return (
-      <Layout location={ this.props.location } siteMetadata={ siteMetadata }>
-        <SEO />
+      <Layout location={ this.props.location } siteMetadata={ siteMetadata } posts={ data.allMarkdownRemark.edges }>
         <VerbosityContext.Consumer>{
-          ( { verbosity } ) => {
+          ( layoutState ) => {
+            const { verbosity, display, toggleCustomExperienceVisibility } = layoutState
             let posts
 
             switch ( verbosity ) {
-              case 'short':
-                posts = this.getFusedPosts( data.allMarkdownRemark.edges )
+              case 'Curriculum Vitæ':
+                posts = data.allMarkdownRemark.edges
               break
 
-              case 'long':
+              case 'Résumé':
               default:
-                posts = data.allMarkdownRemark.edges
+                posts = this.getFusedPosts( data.allMarkdownRemark.edges )
               break
             }
 
             return (
-              posts.map( ( { node }, index ) => {
+              <>
+              <SEO title={ verbosity } />
+              { posts.map( ( { node }, index ) => {
                 const { org, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
                 const title = node.frontmatter.title || node.fields.slug
                 const timeOnJob = this.getDuration( startDate, endDate )
@@ -203,13 +195,13 @@ class Experience extends React.Component {
                   <article
                     id={ bareSlug }
                     key={ bareSlug }
-                    className={ `experience-item${!this.state.display[node.fields.slug] ? ' experience-item--collapsed' : ''}` }
+                    className={ `experience-item${!display[node.fields.slug].current ? ' experience-item--collapsed' : ''}` }
                   >
                     <button
                       className="toggle-experience"
-                      onClick={ () => toggleDisplay( node.fields.slug ) }
+                      onClick={ () => toggleCustomExperienceVisibility( node.fields.slug ) }
                     >
-                      <span>{ this.state.display[node.fields.slug] ? '-' : '+' }</span>
+                      <span>{ display[node.fields.slug].current ? '-' : '+' }</span>
                     </button>
                     <header
                       style={{
@@ -258,7 +250,7 @@ class Experience extends React.Component {
                       </div>
                     </header>
                     <div
-                      hidden={ verbosity === 'short' }
+                      hidden={ verbosity === 'Résumé' }
                       style={{
                         marginBottom: rhythm(1 / 2),
                       }}
@@ -283,7 +275,8 @@ class Experience extends React.Component {
                     </footer>
                   </article>
                 )
-              } )
+              } ) }
+              </>
             )
           }
         }</VerbosityContext.Consumer>
@@ -298,7 +291,6 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
         author
         jobTitle
       }
