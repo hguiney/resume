@@ -13,7 +13,7 @@ class Experience extends React.PureComponent {
 
   static sections = ['roles', 'tech', 'tools'];
   static clipLargeDurations = true;
-  static clipSmallDurations = true;
+  static roundUpSmallDurations = true;
 
   constructor( props ) {
     super( props )
@@ -143,6 +143,17 @@ class Experience extends React.PureComponent {
       }
     }
 
+    if ( Experience.roundUpSmallDurations
+      && (
+        ( relativeTime[1] === 'days' )
+        || ( relativeTime[1] === 'weeks' )
+      )
+    ) {
+      let number = parseInt( relativeTime[0], 10 );
+
+      humanized = '1 month';
+    }
+
     return humanized;
   }
 
@@ -228,9 +239,7 @@ class Experience extends React.PureComponent {
                             </time>
                             : 'Current'
                           }{
-                            ( relativeTime[1] !== 'days' )
-                            && ( relativeTime[1] !== 'weeks' )
-                            && <>
+                            <>
                               {` `}
                               <span className="duration-human">
                                 <span className="duration-human__paren">(</span>{
