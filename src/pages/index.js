@@ -124,6 +124,20 @@ class Experience extends React.PureComponent {
     return a.localeCompare( b );
   }
 
+  prioritize( a, b ) {
+    const important = ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'React', 'Redux'];
+
+    if ( important.indexOf( a ) !== -1 ) {
+      return -1;
+    }
+
+    if ( important.indexOf( b ) !== -1 ) {
+      return 1;
+    }
+
+    return 0;
+  }
+
   getRelativeTime( durationObject ) {
     return (
       durationObject.imprecise.humanize()
@@ -197,6 +211,7 @@ class Experience extends React.PureComponent {
                     // Remove duplicates
                     .filter( ( item, index ) => node.frontmatter[section].indexOf( item ) === index )
                     .sort( this.alphabetize )
+                    // .sort( this.prioritize )
                 } )
 
                 const relativeTime = this.getRelativeTime( timeOnJob )
