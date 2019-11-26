@@ -4,7 +4,9 @@ module.exports = {
   siteMetadata: {
     title: `Hugh Guiney’s Work Experience`,
     author: `Hugh Guiney`,
-    jobTitle: `Web Developer, UX Designer`,
+    // jobTitle: `Web Developer, UX Designer`,
+    // jobTitle: `UX Developer`,
+    jobTitle: `Senior UI/UX Designer & React Developer`,
     description: `I handcraft online experiences that are user-focused,  content-driven, and work across devices.`,
     siteUrl: `https://hughx.com/resume/`,
     email: ( process.env.EMAIL || `email@example.com`),

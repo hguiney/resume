@@ -220,9 +220,11 @@ class Layout extends React.Component {
             } }>
               <h3>Top Tech</h3>
               <ul>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>JavaScript (ES6+)</li>
                 <li>HTML5</li>
                 <li>CSS3</li>
-                <li>JavaScript (ES6+)</li>
               </ul>
 
               <h3>Languages</h3>
@@ -233,7 +235,7 @@ class Layout extends React.Component {
 
               <h3>Certifications</h3>
               <ul>
-                <li>CodementorX Certified Developer</li>
+                <li>Arc.dev Certified Developer</li>
               </ul>
 
               <h3>Honors &amp; Awards</h3>
