@@ -177,7 +177,7 @@ class Experience extends React.PureComponent {
               <>
               <SEO title={ verbosity } />
               { posts.map( ( { node }, index ) => {
-                const { org, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
+                const { org, contractingOrg, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
                 const title = node.frontmatter.title || node.fields.slug
                 const timeOnJob = this.getDuration( startDate, endDate )
 
@@ -213,7 +213,7 @@ class Experience extends React.PureComponent {
                           marginBottom: rhythm(1 / 4),
                         }}
                       >
-                        <b className="title">{title}</b>, <span className="org">{org}</span>
+                        <b className="title">{title}</b>, <span className="org">{org}</span> { contractingOrg && <span className="contractingOrg">(via {contractingOrg})</span>}
                       </h3>
                       <div className="job-attributes">
                         <span className={ `job-type job-type--${type}` }>{ this.getTypeText( type ) }</span>
@@ -314,6 +314,7 @@ export const pageQuery = graphql`
             endDate
             endDateFormatted: endDate(formatString: "MMMM YYYY")
             org
+            contractingOrg
             location
             remote
             defaultDisplay

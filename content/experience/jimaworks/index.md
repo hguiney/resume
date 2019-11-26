@@ -1,15 +1,16 @@
 ---
-title: Senior Front-end Developer
+title: Senior UI/UX Designer & Full-stack Developer
 org: Jimaworks
 description: "Bug fixes, new features for highly customized Shopify storefront."
 startDate: "2019-08"
 endDate:
 location: Bethesda, MD
 remote: true
-defaultDisplay: false
+defaultDisplay: true
 type: contract
 roles: [
   'Front-end Development',
+  'Back-end Development',
 ]
 tech: [
   'HTML5',
@@ -20,6 +21,8 @@ tech: [
 tools: [
   'Shopify',
   'Shopify Theme Kit',
+  'BEM',
+  'React',
 ]
 ---
 

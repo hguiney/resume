@@ -1,6 +1,7 @@
 ---
 title: Senior Front-end Developer
-org: SapientNitro
+org: The Hartford
+contractingOrg: SapientNitro
 location: Boston, MA
 startDate: "2013-08"
 endDate: "2013-12"

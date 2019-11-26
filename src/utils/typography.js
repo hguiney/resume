@@ -72,6 +72,11 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       width: `90%`,
       marginBottom: rhythm(1/3),
     },
+    ".contractingOrg": {
+      fontSize: ".9rem",
+      display: "inline-block",
+      verticalAlign: "bottom",
+    },
     "@media print": {
       "#toggle": {
         display: `none`,
