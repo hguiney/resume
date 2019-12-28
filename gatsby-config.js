@@ -18,7 +18,7 @@ module.exports = {
       country: `USA`,
     },
     social: {
-      twitter: `TurboHax`,
+      twitter: `HughxDev`,
       github: `hguiney`,
       stackoverflow: `214325/hugh-guiney`,
       linkedin: `hughguiney`,
