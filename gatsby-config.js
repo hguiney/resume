@@ -8,9 +8,9 @@ module.exports = {
     // jobTitle: `UX Developer`,
     jobTitle: `Senior UI/UX Designer & React Developer`,
     description: `I handcraft online experiences that are user-focused,  content-driven, and work across devices.`,
-    siteUrl: `https://hughx.com/resume/`,
+    siteUrl: `https://hughx.dev/resume/`,
     email: ( process.env.EMAIL || `email@example.com`),
-    portfolioUrl: `https://hughx.com`,
+    portfolioUrl: `https://hughx.dev`,
     phoneNumber: ( process.env.PHONE_NUMBER || `+1 (555) 123-4567`),
     location: {
       city: `Boston`,
