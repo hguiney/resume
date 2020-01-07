@@ -1,10 +1,11 @@
 ---
 title: Senior Front-end Developer
 org: The Hartford
-contractingOrg: SapientNitro
+contractingOrg: Publicis Sapient
+contractingOrgFka: SapientNitro
 location: Boston, MA
-startDate: "2013-08"
-endDate: "2013-12"
+startDate: "2014-04"
+endDate: "2014-05"
 type: contract
 remote: false
 defaultDisplay: true
