@@ -14,6 +14,7 @@ class Experience extends React.PureComponent {
   static sections = ['roles', 'tech', 'tools'];
   static clipLargeDurations = true;
   static roundUpSmallDurations = true;
+  static roundUpHighNumberOfMonthsToOneYear = false;
 
   constructor( props ) {
     super( props )
@@ -22,7 +23,7 @@ class Experience extends React.PureComponent {
       fusions: {},
     }
 
-    moment.relativeTimeRounding( Math.ceil )
+    moment.relativeTimeRounding( Math.round )
 
     this.fusePosts = this.fusePosts.bind( this )
     this.fusePosts( props.data.allMarkdownRemark.edges )
@@ -36,18 +37,38 @@ class Experience extends React.PureComponent {
     startTime = moment( startTime )
 
     if ( endTime ) {
-      endTime = moment( endTime )
+      const originalEndTime = endTime;
+      const endTimeParts = originalEndTime.split('-');
+      let maximumDaysInMonth = 31;
+
+      if (
+        Experience.roundUpSmallDurations
+        && ( endTimeParts.length === 2 )
+      ) {
+        endTime = `${originalEndTime}-${maximumDaysInMonth}`;
+      }
+
+      endTime = moment( endTime );
+
+      while ( !endTime.isValid() ) {
+        maximumDaysInMonth--;
+        let string = `${originalEndTime}-${maximumDaysInMonth}`;
+        endTime = moment( string );
+      }
     } else {
       endTime = moment()
     }
 
     const duration = endTime.diff( startTime )
-
-    return {
+    const returnValue = {
       duration,
       "imprecise": moment.duration( duration ),
       // "precise": moment.preciseDiff( startTime, endTime ),
     };
+
+    // console.warn( returnValue );
+
+    return returnValue;
   }
 
   getTypeText( type ) {
@@ -146,7 +167,8 @@ class Experience extends React.PureComponent {
     )
   }
 
-  printTime( relativeTime ) {
+  printTime( timeOnJob ) {
+    const relativeTime = this.getRelativeTime( timeOnJob );
     let humanized = relativeTime.join( ' ' );
 
     if ( Experience.clipLargeDurations && relativeTime[1] === 'years' ) {
@@ -157,15 +179,22 @@ class Experience extends React.PureComponent {
       }
     }
 
-    if ( Experience.roundUpSmallDurations
+    if (
+      Experience.roundUpSmallDurations
       && (
         ( relativeTime[1] === 'days' )
         || ( relativeTime[1] === 'weeks' )
       )
     ) {
-      let number = parseInt( relativeTime[0], 10 );
-
       humanized = '1 month';
+    }
+
+    if (
+      !Experience.roundUpHighNumberOfMonthsToOneYear
+      && ( relativeTime[1] === 'year' )
+      && ( timeOnJob.imprecise.years() === 0 )
+    ) {
+      humanized = `${timeOnJob.imprecise.months()} months`;
     }
 
     return humanized;
@@ -202,7 +231,7 @@ class Experience extends React.PureComponent {
               <>
               <SEO title={ verbosity } />
               { posts.map( ( { node }, index ) => {
-                const { org, contractingOrg, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
+                const { org, orgFka, contractingOrg, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
                 const title = node.frontmatter.title || node.fields.slug
                 const timeOnJob = this.getDuration( startDate, endDate )
 
@@ -214,8 +243,9 @@ class Experience extends React.PureComponent {
                     // .sort( this.prioritize )
                 } )
 
-                const relativeTime = this.getRelativeTime( timeOnJob )
-                const bareSlug = this.getBareSlug( node.fields.slug )
+                const bareSlug = this.getBareSlug( node.fields.slug );
+
+                console.warn(orgFka);
 
                 return (
                   <article
@@ -239,7 +269,13 @@ class Experience extends React.PureComponent {
                           marginBottom: rhythm(1 / 4),
                         }}
                       >
-                        <b className="title">{title}</b>, <span className="org">{org}</span> { contractingOrg && <span className="contractingOrg">(via {contractingOrg})</span>}
+                        <b className="title">{title}</b>, <span className="org">{org}</span>&#23;
+                        {
+                          orgFka && <span className="org-parenthetical">(<abbr title="formerly known as">fka</abbr> {orgFka})</span>
+                        }
+                        {
+                          contractingOrg && <span className="org-parenthetical">(via {contractingOrg})</span>
+                        }
                       </h3>
                       <div className="job-attributes">
                         <span className={ `job-type job-type--${type}` }>{ this.getTypeText( type ) }</span>
@@ -258,7 +294,7 @@ class Experience extends React.PureComponent {
                               {` `}
                               <span className="duration-human">
                                 <span className="duration-human__paren">(</span>{
-                                  this.printTime( relativeTime )
+                                  this.printTime( timeOnJob )
                                 }<span className="duration-human__paren">)</span>
                               </span>
                             </>
@@ -338,6 +374,7 @@ export const pageQuery = graphql`
             endDate
             endDateFormatted: endDate(formatString: "MMMM YYYY")
             org
+            orgFka
             contractingOrg
             location
             remote

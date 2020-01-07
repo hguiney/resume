@@ -72,10 +72,13 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       width: `90%`,
       marginBottom: rhythm(1/3),
     },
-    ".contractingOrg": {
+    ".org-parenthetical": {
       fontSize: ".9rem",
       display: "inline-block",
       verticalAlign: "bottom",
+    },
+    "abbr[title]": {
+      borderBottom: "0",
     },
     "@media print": {
       "#toggle": {
