@@ -158,6 +158,8 @@ class Layout extends React.Component {
                 showLinkedin
                 showTwitter
                 showDescription={ verbosity === 'Curriculum Vitæ' }
+                portfolioLinkTracking={ verbosity }
+                portfolioName="Website"
               />
           }</VerbosityContext.Consumer>
         </>

@@ -24,7 +24,17 @@ class Bio extends React.Component {
             portfolioUrl,
             location,
             social,
-          } = data.site.siteMetadata
+          } = data.site.siteMetadata;
+          let portfolioLinkTracking = '';
+          switch ( this.props.portfolioLinkTracking ) {
+            case 'Curriculum Vitæ':
+              portfolioLinkTracking = '/from-cv';
+            break;
+
+            case 'Résumé':
+            default:
+              portfolioLinkTracking = '/from-resume';
+          }
           const contactMethods = Object.keys( this.props )
             .map( ( prop ) => {
               switch ( prop ) {
@@ -35,7 +45,7 @@ class Bio extends React.Component {
                 case 'showEmail':
                   return !!this.props.showEmail && <a id="email" className="bio__attribute bio__attribute--email" href={ `mailto:${email}` }>{ email }</a>
                 case 'showPortfolio':
-                  return !!this.props.showPortfolio && <a id="portfolio" className="bio__attribute bio__attribute--portfolio" href={ portfolioUrl }>Portfolio</a>
+                  return !!this.props.showPortfolio && <a id="portfolio" className="bio__attribute bio__attribute--portfolio" href={ `${portfolioUrl}${portfolioLinkTracking}` }>{ this.props.portfolioName || 'Portfolio' }</a>
                 case 'showGithub':
                   return !!this.props.showGithub && <a id="github" className="bio__attribute bio__attribute--github" href={ `https://github.com/${social.github}` }>GitHub</a>
                 case 'showStackoverflow':
