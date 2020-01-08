@@ -11,10 +11,11 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
     "a:visited": {
       color: styles.a.color,
     },
-    "h3": {
+    "h3, .h3": {
       fontSize: rhythm(1/1.374),
       fontWeight: `normal`,
       marginBottom: rhythm(1 / 4),
+      lineHeight: "1.53rem",
     },
     ".org": {
       // whiteSpace: `nowrap`,
@@ -127,7 +128,7 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
     // "aside": {
     //
     // },
-    "aside > h3": {
+    "aside > h3, aside > .h3": {
       fontWeight: `bold`,
     },
     // "main": {

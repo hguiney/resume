@@ -19,6 +19,12 @@ class Layout extends React.Component {
       verbosity: 'Résumé',
       setVerbosity: this.setVerbosity.bind( this ),
       display: {},
+      headingDisplay: {
+        'selected-experience': {
+          current: true,
+          // user: false,
+        }
+      },
       toggleCustomExperienceVisibility: ( slug ) => {
         const newState = {
           ...this.state
@@ -29,6 +35,17 @@ class Layout extends React.Component {
         newState.display[slug].user = newVisibility
 
         this.setState( newState )
+      },
+      toggleHeadingVisibility: ( headingSlug ) => {
+        const newState = {
+          ...this.state,
+        };
+        const newHeadingVisibility = !newState.headingDisplay[headingSlug].current;
+
+        newState.headingDisplay[headingSlug].current = newHeadingVisibility;
+        // newState.headingDisplay[headingSlug].user = newHeadingVisibility;
+
+        this.setState( newState );
       }
     }
 
@@ -220,7 +237,7 @@ class Layout extends React.Component {
               marginLeft: rhythm(1.5),
               fontSize: rhythm(1/1.6)
             } }>
-              <h3>Top Tech</h3>
+              <h2 className="h3">Top Tech</h2>
               <ul>
                 <li>React</li>
                 <li>Node.js</li>
@@ -229,23 +246,23 @@ class Layout extends React.Component {
                 <li>CSS3</li>
               </ul>
 
-              <h3>Languages</h3>
+              <h2 className="h3">Languages</h2>
               <ul>
                 <li>English (Native)</li>
                 <li>Japanese (Elementary)</li>
               </ul>
 
-              <h3>Certifications</h3>
+              <h2 className="h3">Certifications</h2>
               <ul>
                 <li>Arc.dev Certified Developer</li>
               </ul>
 
-              <h3>Honors &amp; Awards</h3>
+              <h2 className="h3">Honors &amp; Awards</h2>
               <ul>
                 <li>Runner-Up, TechCrunch Disrupt NY Hackathon 2017</li>
               </ul>
 
-              <h3>Other Training</h3>
+              <h2 className="h3">Other Training</h2>
               <ul>
                 <li>Improvisational Theater, ImprovBoston Comedy School</li>
               </ul>

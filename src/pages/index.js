@@ -213,7 +213,7 @@ class Experience extends React.PureComponent {
       <Layout location={ this.props.location } siteMetadata={ siteMetadata } posts={ data.allMarkdownRemark.edges }>
         <VerbosityContext.Consumer>{
           ( layoutState ) => {
-            const { verbosity, display, toggleCustomExperienceVisibility } = layoutState
+            const { verbosity, display, headingDisplay, toggleCustomExperienceVisibility, toggleHeadingVisibility } = layoutState
             let posts
 
             switch ( verbosity ) {
@@ -229,6 +229,15 @@ class Experience extends React.PureComponent {
 
             return (
               <>
+              <header className={ `experience-item${!headingDisplay['selected-experience'].current ? ' experience-item--collapsed' : ''}` }>
+                <button
+                  className="toggle-experience"
+                  onClick={ () => toggleHeadingVisibility( 'selected-experience' ) }
+                >
+                  <span>{ headingDisplay['selected-experience'].current ? '-' : '+' }</span>
+                </button>
+                <h2>Selected Experience</h2>
+              </header>
               <SEO title={ verbosity } />
               { posts.map( ( { node }, index ) => {
                 const { org, orgFka, contractingOrg, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
@@ -244,8 +253,6 @@ class Experience extends React.PureComponent {
                 } )
 
                 const bareSlug = this.getBareSlug( node.fields.slug );
-
-                console.warn(orgFka);
 
                 return (
                   <article
