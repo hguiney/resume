@@ -3,7 +3,7 @@ title: Senior Front-end Developer
 org: COMFORT Communication Project
 location: Los Angeles, CA
 remote: true
-defaultDisplay: true
+defaultDisplay: false
 type: contract
 startDate: "2017-04"
 endDate: "2017-07"

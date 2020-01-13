@@ -6,7 +6,7 @@ startDate: "2012-01-01"
 endDate: "2013-01-01"
 location: Brooklyn, NY
 remote: true
-defaultDisplay: true
+defaultDisplay: false
 type: contract
 roles: [
   'Front-end Development',

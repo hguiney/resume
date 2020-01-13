@@ -8,7 +8,7 @@ startDate: "2014-04"
 endDate: "2014-05"
 type: contract
 remote: false
-defaultDisplay: true
+defaultDisplay: false
 description: Built mobile application front-end for The Hartford.
 roles: [
   'Front-end Development',
