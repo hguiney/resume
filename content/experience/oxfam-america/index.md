@@ -31,6 +31,6 @@ tools: [
   'Bower',
   'Gulp',
   'Sublime Text 3',
-  'CentOS Linux'
+  'Linux', # 'CentOS Linux'
 ]
 ---

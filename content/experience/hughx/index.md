@@ -60,7 +60,7 @@ tools: [
   'Photoshop',
   'Illustrator',
   'Premiere Pro',
-  'Arch Linux',
+  'Linux', # 'Arch Linux',
   'styled-components',
   'Slack',
   'Trello',

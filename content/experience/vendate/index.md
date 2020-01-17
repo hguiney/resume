@@ -43,7 +43,7 @@ tools: [
   'Grunt',
   'Bower',
   'Sublime Text 2',
-  'CentOS Linux'
+  'Linux', # 'CentOS Linux',
 ]
 ---
 
