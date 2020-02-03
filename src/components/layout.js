@@ -146,6 +146,9 @@ class Layout extends React.Component {
     if ( location.pathname === rootPath ) {
       header = (
         <>
+          <div className="img-container" style={ { textAlign: "left", width: "32rem", marginRight: "auto" } }>
+            <img src="/eliassen-group.png" alt="Recruitment firm logo" style={ { width: "50%" } } />
+          </div>
           <hgroup style={{
             marginBottom: rhythm(1 / 4),
           }}>
@@ -161,19 +164,19 @@ class Layout extends React.Component {
                 {siteMetadata.author}
               </Link>
             </h1>
-            <h2 style={{ marginBottom: rhythm(1/4) }}>{siteMetadata.jobTitle}</h2>
+            {/* <h2 style={{ marginBottom: rhythm(1/4) }}>{siteMetadata.jobTitle}</h2> */}
           </hgroup>
           <VerbosityContext.Consumer>{
             ( { verbosity } ) =>
               <Bio
                 showLocation={ verbosity === 'Curriculum Vitæ' }
-                showPhoneNumber
-                showEmail
-                showPortfolio
-                showGithub
-                showStackoverflow
-                showLinkedin
-                showTwitter
+                // showPhoneNumber
+                // showEmail
+                // showPortfolio
+                // showGithub
+                // showStackoverflow
+                // showLinkedin
+                // showTwitter
                 showDescription={ verbosity === 'Curriculum Vitæ' }
                 portfolioLinkTracking={ verbosity }
                 portfolioName="Website"
@@ -246,11 +249,11 @@ class Layout extends React.Component {
                 <li>CSS3</li>
               </ul>
 
-              <h2 className="h3">Languages</h2>
+              {/* <h2 className="h3">Languages</h2>
               <ul>
                 <li>English (Native)</li>
                 <li>Japanese (Elementary)</li>
-              </ul>
+              </ul> */}
 
               <h2 className="h3">Certifications</h2>
               <ul>

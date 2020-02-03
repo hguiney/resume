@@ -296,7 +296,7 @@ class Experience extends React.PureComponent {
                               { endDateFormatted }
                             </time>
                             : 'Current'
-                          }{
+                          }{/*
                             <>
                               {` `}
                               <span className="duration-human">
@@ -305,14 +305,18 @@ class Experience extends React.PureComponent {
                                 }<span className="duration-human__paren">)</span>
                               </span>
                             </>
-                          }
+                              */}
                         </time>
-                        <TextSpacer dot />
-                        <span>{
+                        <span>{/*
                           ( remote === null ) ?
                           `Remote / ${location}` : (
                             remote ? 'Remote' : location
                           )
+                        */}
+                        {
+                        ( location === 'Boston, MA' )
+                          ? <><TextSpacer dot />{ location }</>
+                          : '' //<><TextSpacer dot />{ 'Remote' }</>
                         }</span>
                       </div>
                     </header>
