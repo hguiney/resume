@@ -3,7 +3,7 @@ title: Senior UI/UX Designer & Full-stack Developer
 org: Jimaworks
 description: "Bug fixes, new features for highly customized Shopify storefront."
 startDate: "2019-08"
-endDate:
+endDate: "2020-03"
 location: Bethesda, MD
 remote: true
 defaultDisplay: true

@@ -65,6 +65,7 @@ tools: [
   'Slack',
   'Trello',
   'BEM',
+  'Sketch',
 ]
 ---
 
