@@ -6,7 +6,7 @@ module.exports = {
     author: `Hugh Guiney`,
     // jobTitle: `Web Developer, UX Designer`,
     // jobTitle: `UX Developer`,
-    jobTitle: `Senior UI/UX Designer & React Developer`,
+    jobTitle: `Senior JavaScript Developer & UI/UX Designer`,
     description: `I handcraft online experiences that are user-focused,  content-driven, and work across devices.`,
     siteUrl: `https://hughx.dev/resume/`,
     email: ( process.env.EMAIL || `email@example.com`),
