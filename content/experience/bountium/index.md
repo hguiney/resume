@@ -1,5 +1,5 @@
 ---
-title: Senior UI/UX Designer & React Developer
+title: Senior React Developer & UI/UX Designer
 org: Bountium
 contractingOrg: Duomo
 startDate: "2019-08"

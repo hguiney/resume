@@ -46,6 +46,13 @@ tools: [
   'Slack',
   'Trello',
   'BEM',
+  'Storybook',
+  'ESLint',
+  'Visual Studio Code',
+  'Photoshop',
+  'Illustrator',
+  'YouTube API',
+  'Vimeo API',
 ]
 
 ---

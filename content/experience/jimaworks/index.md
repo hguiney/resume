@@ -1,5 +1,5 @@
 ---
-title: Senior UI/UX Designer & Full-stack Developer
+title: Senior Full-stack Developer & UI/UX Designer
 org: Jimaworks
 description: "Bug fixes, new features for highly customized Shopify storefront."
 startDate: "2019-08"

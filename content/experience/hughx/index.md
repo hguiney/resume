@@ -66,6 +66,8 @@ tools: [
   'Trello',
   'BEM',
   'Sketch',
+  'Storybook',
+  'Visual Studio Code',
 ]
 ---
 

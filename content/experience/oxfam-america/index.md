@@ -1,5 +1,5 @@
 ---
-title: Senior UI/UX Designer & Front-end Developer
+title: Senior Front-end Developer & UI/UX Designer
 org: Oxfam America
 startDate: "2016-01"
 endDate: "2016-04"

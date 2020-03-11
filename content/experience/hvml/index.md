@@ -40,6 +40,7 @@ tools: [
   'Atom',
   'NPM',
   'Yarn',
+  'Visual Studio Code',
 ]
 ---
 

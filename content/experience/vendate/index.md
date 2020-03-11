@@ -1,5 +1,5 @@
 ---
-title: Senior UI/UX Designer & Full-stack Developer
+title: Senior Full-stack Developer & UI/UX Designer
 org: Vendate
 startDate: "2015-03"
 endDate: "2016-01"
