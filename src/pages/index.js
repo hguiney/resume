@@ -243,6 +243,13 @@ class Experience extends React.PureComponent {
                 const { org, orgFka, contractingOrg, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
                 const title = node.frontmatter.title || node.fields.slug
                 const timeOnJob = this.getDuration( startDate, endDate )
+                const now = moment().toISOString().split( 'T' )[0]
+                const endsInTheFuture = ( endDate > now )
+
+                console.log( 'endDate', endDate );
+                console.log( 'endDate bool', !!endDate );
+                console.log( 'now', now );
+                console.log( '>', endDate > now )
 
                 Experience.sections.forEach( ( section ) => {
                   node.frontmatter[section] = node.frontmatter[section]
@@ -292,9 +299,11 @@ class Experience extends React.PureComponent {
                             { startDateFormatted }
                           </time> – {
                             endDate ?
-                            <time dateTime={ endDate }>
-                              { endDateFormatted }
-                            </time>
+                            (
+                              endsInTheFuture ?
+                                'Current'
+                                : <time dateTime={ endDate }>{ endDateFormatted }</time>
+                            )
                             : 'Current'
                           }{
                             <>
@@ -302,6 +311,7 @@ class Experience extends React.PureComponent {
                               <span className="duration-human">
                                 <span className="duration-human__paren">(</span>{
                                   this.printTime( timeOnJob )
+                                  + ( endsInTheFuture ? ' estimated' : '' )
                                 }<span className="duration-human__paren">)</span>
                               </span>
                             </>
