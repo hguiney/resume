@@ -18,6 +18,7 @@ tech: [
   'Sass',
   'SVN',
   'SVG',
+  'WAI-ARIA',
 ]
 tools: [
   'Sublime Text 2',

@@ -44,6 +44,7 @@ tools: [
   'Bower',
   'Sublime Text 2',
   'Linux', # 'CentOS Linux',
+  'Photoshop',
 ]
 ---
 
