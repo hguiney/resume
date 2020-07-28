@@ -1,11 +1,11 @@
 ---
-title: Senior React Developer
+title: Senior React Developer & UI/UX Designer
 org: City of Boston
 description: "Implementing redesign of Metrolist, a tool that helps Boston residents search for affordable housing"
 startDate: "2020-03-02"
-endDate: "2020-07-29"
+endDate: "2020-08-31"
 location: Boston, MA
-remote: false
+remote: true
 defaultDisplay: true
 type: contract
 roles: [
@@ -40,7 +40,9 @@ tools: [
   'Google Hangouts Meet',
   'Google Docs',
   'GitBook',
+  'GitHub',
   'Slack',
+  'Yarn'
 ]
 ---
 
