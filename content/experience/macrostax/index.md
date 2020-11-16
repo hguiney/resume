@@ -28,4 +28,4 @@ tools: [
 ]
 ---
 
-Auditing and improving performance for fitness startup’s marketing site.
+Audited and improved performance for fitness startup’s marketing site.
