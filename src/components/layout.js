@@ -25,6 +25,9 @@ class Layout extends React.Component {
           // user: false,
         }
       },
+      descriptionDisplay: {
+        current: false,
+      },
       toggleCustomExperienceVisibility: ( slug ) => {
         const newState = {
           ...this.state
@@ -44,6 +47,16 @@ class Layout extends React.Component {
 
         newState.headingDisplay[headingSlug].current = newHeadingVisibility;
         // newState.headingDisplay[headingSlug].user = newHeadingVisibility;
+
+        this.setState( newState );
+      },
+      toggleDescriptionVisibility: () => {
+        const newState = {
+          ...this.state,
+        };
+        const newDescriptionVisibility = !newState.descriptionDisplay.current;
+
+        newState.descriptionDisplay.current = newDescriptionVisibility;
 
         this.setState( newState );
       }
@@ -220,13 +233,33 @@ class Layout extends React.Component {
             textAlign: "center",
             display: "flex",
             justifyContent: "space-between",
+            // alignContent: "center",
+            flexWrap: "wrap",
             width: "29rem",
             margin: "0 auto",
+            marginBottom: rhythm(1)
           } }>
             <Toggle
-              style={ { marginBottom: rhythm(1) } }
+              style={ { marginBottom: rhythm(.5) } }
             />
             <SaveAs />
+            <label
+              id="show-descriptions"
+              style={ {
+                margin: "0 auto",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: "9.5rem",
+              } }
+            >
+              <input
+                type="checkbox"
+                onClick={ this.state.toggleDescriptionVisibility.bind( this ) }
+                // defaultChecked={ this.state.verbosity === 'Curriculum Vitæ' }
+                disabled={ this.state.verbosity === 'Curriculum Vitæ' }
+              /> Show Descriptions
+            </label>
           </menu>
           <header style={ {
             textAlign: `center`,

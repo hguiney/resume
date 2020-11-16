@@ -82,11 +82,8 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       borderBottom: "0",
     },
     "@media print": {
-      "#toggle": {
-        display: `none`,
-      },
-      "#save-as": {
-        display: `none`,
+      "menu": {
+        display: "none !important",
       },
       "#page": {
         padding: `0 !important`,

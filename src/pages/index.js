@@ -213,7 +213,14 @@ class Experience extends React.PureComponent {
       <Layout location={ this.props.location } siteMetadata={ siteMetadata } posts={ data.allMarkdownRemark.edges }>
         <VerbosityContext.Consumer>{
           ( layoutState ) => {
-            const { verbosity, display, headingDisplay, toggleCustomExperienceVisibility, toggleHeadingVisibility } = layoutState
+            const {
+              verbosity,
+              display,
+              headingDisplay,
+              descriptionDisplay,
+              toggleCustomExperienceVisibility,
+              toggleHeadingVisibility
+            } = layoutState
             let posts
 
             switch ( verbosity ) {
@@ -245,11 +252,11 @@ class Experience extends React.PureComponent {
                 const timeOnJob = this.getDuration( startDate, endDate )
                 const now = moment().toISOString().split( 'T' )[0]
                 const endsInTheFuture = ( endDate > now )
+                let descriptionHtml = ( node.frontmatter.description || node.html )
 
-                console.log( 'endDate', endDate );
-                console.log( 'endDate bool', !!endDate );
-                console.log( 'now', now );
-                console.log( '>', endDate > now )
+                if ( node.frontmatter.fusible && ( verbosity === 'Résumé' ) ) {
+                  descriptionHtml = descriptionHtml.replace( ' (see below)', '' )
+                }
 
                 Experience.sections.forEach( ( section ) => {
                   node.frontmatter[section] = node.frontmatter[section]
@@ -327,13 +334,13 @@ class Experience extends React.PureComponent {
                       </div>
                     </header>
                     <div
-                      hidden={ verbosity === 'Résumé' }
-                      style={{
+                      hidden={ verbosity === 'Résumé' && !descriptionDisplay.current }
+                      style={ {
                         marginBottom: rhythm(1 / 2),
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: node.frontmatter.description || node.html,
-                      }}
+                      } }
+                      dangerouslySetInnerHTML={ {
+                        __html: descriptionHtml,
+                      } }
                     />
                     <footer>
                       <dl>
@@ -374,9 +381,9 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: {
-        fields: [frontmatter___endDate, frontmatter___startDate],
-        order: DESC
-      }
+        fields: [frontmatter___priority, frontmatter___endDate, frontmatter___startDate],
+        order: [ASC, DESC, DESC]
+      },
     ) {
       edges {
         node {

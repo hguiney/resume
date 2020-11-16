@@ -3,6 +3,7 @@ title: Open-Source Maintainer
 org: HVML
 startDate: "2013-11"
 endDate:
+priority: 3
 description: Hypervideo Markup Language, or HVML, is an open specification that provides a syntax for describing visual media such as films, TV series, or web videos. It can be used in XML databases to make video libraries searchable. It can also be used on the Front-end to annotate videos with time-based content and UI.
 location: Boston, MA
 remote: true
