@@ -162,19 +162,10 @@ class Layout extends React.Component {
           <hgroup style={{
             marginBottom: rhythm(1 / 4),
           }}>
-            <h1 style={{ marginBottom: 0, }}>
-              <Link
-                style={{
-                  boxShadow: `none`,
-                  textDecoration: `none`,
-                  color: `inherit`,
-                }}
-                to={`/`}
-              >
-                {siteMetadata.author}
-              </Link>
+            <h1 style={{ marginBottom: 0, }} contentEditable>
+              {siteMetadata.author}
             </h1>
-            <h2 style={{ marginBottom: rhythm(1/4) }}>{siteMetadata.jobTitle}</h2>
+            <h2 style={{ marginBottom: rhythm(1/4) }} contentEditable>{siteMetadata.jobTitle}</h2>
           </hgroup>
           <VerbosityContext.Consumer>{
             ( { verbosity } ) =>
@@ -187,6 +178,7 @@ class Layout extends React.Component {
                 showStackoverflow
                 showLinkedin
                 showTwitter
+                // showImdb
                 showDescription={ verbosity === 'Curriculum Vitæ' }
                 portfolioLinkTracking={ verbosity }
                 portfolioName="Website"
@@ -278,6 +270,15 @@ class Layout extends React.Component {
                 <li>HTML5</li>
                 <li>CSS3</li>
               </ul>
+              
+              {/* <h2 className="h3">Top Tools</h2>
+              <ul>
+                <li>Premiere Pro</li>
+                <li>Photoshop</li>
+                <li>Illustrator</li>
+                <li>YouTube</li>
+                <li>Facebook</li>
+              </ul> */}
 
               <h2 className="h3">Languages</h2>
               <ul>
@@ -285,10 +286,10 @@ class Layout extends React.Component {
                 <li>Japanese (Elementary)</li>
               </ul>
 
-              <h2 className="h3">Certifications</h2>
+              {/* <h2 className="h3">Certifications</h2>
               <ul>
                 <li>Arc.dev Certified Developer</li>
-              </ul>
+              </ul> */}
 
               <h2 className="h3">Honors &amp; Awards</h2>
               <ul>

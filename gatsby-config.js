@@ -23,6 +23,7 @@ module.exports = {
       github: `hguiney`,
       stackoverflow: `214325/hugh-guiney`,
       linkedin: `hughguiney`,
+      imdb: `nm4273358`,
     },
   },
   plugins: [

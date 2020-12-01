@@ -290,7 +290,7 @@ class Experience extends React.PureComponent {
                           marginBottom: rhythm(1 / 4),
                         }}
                       >
-                        <b className="title">{title}</b>, <span className="org">{org}</span>&#23;
+                        <b className="title" contentEditable>{title}</b>, <span className="org">{org}</span>&#23;
                         {
                           orgFka && <span className="org-parenthetical">(<abbr title="formerly known as">fka</abbr> {orgFka})</span>
                         }
@@ -344,9 +344,9 @@ class Experience extends React.PureComponent {
                     />
                     <footer>
                       <dl>
-                        {node.frontmatter.roles && <><dt>Roles</dt> <dd>{ node.frontmatter.roles.join( ', ' )}</dd></>}
-                        {node.frontmatter.tech && <><dt>Tech</dt> <dd>{ node.frontmatter.tech.join( ', ' )}</dd></>}
-                        {node.frontmatter.tools && <><dt>Tools</dt> <dd>{
+                        {node.frontmatter.roles.length ? <><dt>Roles</dt> <dd>{ node.frontmatter.roles.join( ', ' )}</dd></> : ''}
+                        {node.frontmatter.tech.length ? <><dt>Tech</dt> <dd>{ node.frontmatter.tech.join( ', ' )}</dd></> : ''}
+                        {node.frontmatter.tools.length ? <><dt>Tools</dt> <dd>{
                           // Strip version numbers which are no longer relevant
                           // without deleting version information on the backend
                           node.frontmatter.tools.map(
@@ -354,7 +354,7 @@ class Experience extends React.PureComponent {
                               .replace( /(Sublime Text|Twitter Bootstrap|ZURB Foundation) [0-9]+/i, '$1' )
                               .replace( 'Twitter Bootstrap', 'Bootstrap' )
                           ).join( ', ' )
-                        }</dd></> }
+                        }</dd></> : '' }
                       </dl>
                     </footer>
                   </article>

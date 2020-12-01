@@ -54,6 +54,8 @@ class Bio extends React.Component {
                   return !!this.props.showLinkedin && <a id="linkedin" className="bio__attribute bio__attribute--linkedin" href={ `https://www.linkedin.com/in/${social.linkedin}` }>LinkedIn</a>
                 case 'showTwitter':
                   return !!this.props.showTwitter && <a id="twitter" className="bio__attribute bio__attribute--twitter" href={ `https://twitter.com/${social.twitter}` }>Twitter</a>
+                case 'showImdb':
+                  return !!this.props.showImdb && <a id="imdb" className="bio__attribute bio__attribute--imdb" href={ `https://www.imdb.com/name/${social.imdb}` }>IMDb</a>
                 default:
                   // eslint-disable-next-line
                   return;
