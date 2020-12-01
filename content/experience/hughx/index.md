@@ -72,5 +72,5 @@ tools: [
 ]
 ---
 
-Sole proprietorship; started during senior year of high school. Supply full-service web design/development (wireframes, branding, coding, etc.) primarily to local SMBs, startups on contract basis.
+Sole proprietorship; started during senior year of high school. Supply full-service design/development (wireframes, branding, coding, etc.) primarily to local SMBs, startups on contract basis.
 

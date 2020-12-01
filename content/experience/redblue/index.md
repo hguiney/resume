@@ -5,7 +5,7 @@ org: RedBlue
 startDate: "2016-05"
 endDate:
 priority: 2
-description: JavaScript video player that implements HVML annotations (see below). Allows content producers to create “hypervideo” (interactive online video), such as choose-your-own-story films.
+description: "JavaScript video player that implements HVML annotations (see below). Allows content producers to create “hypervideo”—web videos with interactive elements such as links, forms, and branching narratives."
 location: Boston, MA
 remote: true
 defaultDisplay: true

@@ -5,7 +5,7 @@ description: "Implemented redesign of Metrolist, a tool that helps Boston reside
 startDate: "2020-03-02"
 endDate: "2020-09-04"
 location: Boston, MA
-remote: true
+remote: null
 defaultDisplay: true
 type: contract
 roles: [
