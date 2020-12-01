@@ -36,4 +36,4 @@ tools: [
 ]
 ---
 
-Flare makes smart jewelry that helps women get out of iffy situations by pressing a button to call for help. Worked closely with CEO on early-stage startup team to build “911 Services” feature. This feature connects users with emergency dispatchers and reports their location in real-time. Led development effort and assigned/approved work for direct report. 100% remote.
+Named one of Time’s Best Inventions of 2020, Flare makes smart jewelry that helps women get out of iffy situations by pressing a button to call for help. Worked closely with CEO on early-stage startup team to build “911 Services” feature. This feature connects users with emergency dispatchers and reports their location in real-time. Led development effort and assigned/approved work for direct report.
