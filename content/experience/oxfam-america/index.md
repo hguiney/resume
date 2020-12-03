@@ -32,5 +32,6 @@ tools: [
   'Gulp',
   'Sublime Text 3',
   'Linux', # 'CentOS Linux'
+  'Outlook',
 ]
 ---

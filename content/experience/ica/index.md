@@ -24,8 +24,4 @@ tools: [
 ]
 ---
 
-The Institute of Contemporary Art regularly contracted me for various projects.
-
-As a Digital Studio Instructor, I conducted classes demonstrating professional media tools to students of all ages and experience levels. Alternately leading and assisting, I had to coordinate on two-person teams to help bring those lagging behind in lessons up to speed without slowing down the rest of the class. This required routinely breaking down technical concepts into layman’s terms.
-
-As an Event Videographer, I also shot and edited a number of stage performances for archival and promotional purposes.
+The Institute of Contemporary Art regularly contracted me for various projects. As a Digital Studio Instructor, I conducted classes demonstrating professional media tools to students of all ages and experience levels. Alternately leading and assisting, I had to coordinate on two-person teams to help bring those lagging behind in lessons up to speed without slowing down the rest of the class. This required routinely breaking down technical concepts into layman’s terms. As an Event Videographer, I also shot and edited a number of stage performances for archival and promotional purposes.

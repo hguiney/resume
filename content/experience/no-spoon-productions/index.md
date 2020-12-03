@@ -3,7 +3,7 @@ title: Filmmaker
 org: No Spoon Productions
 startDate: "2003"
 endDate: 
-description: "Independent film and television label. Filmography includes “Twenty-One” (Short, 2007. Official Selection, Reel Teens USA Film Festival), “The Cost of Doing Business” (Short, 2014. Official Selection: Boston Underground Film Festival, Home Grown Shorts, Online New England Film Festival), “Hugh’s Vlog” (Web Series, 2016–Present), and “Entanglement” (Interactive feature, pre-production)."
+description: "Independent film and television label. Filmography includes “Twenty-One” (Short, 2007. Official Selection, Reel Teens USA Film Festival), “The Cost of Doing Business” (Short, 2014. Official Selection: Boston Underground Film Festival, Home Grown Shorts, Online New England Film Festival), “Hugh’s Vlog” (Web Series, 2016–Present), and “Entanglement” (Interactive Feature, pre-production)."
 location: Boston, MA
 remote: false
 defaultDisplay: false
