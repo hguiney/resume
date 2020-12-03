@@ -200,7 +200,8 @@ class Layout extends React.Component {
                 showGithub={ this.state.mode === 'tech' }
                 showStackoverflow={ this.state.mode === 'tech' }
                 showLinkedin
-                showTwitter
+                showTwitter={ this.state.mode === 'tech' }
+                showPersonalTwitter={ this.state.mode === 'media' }
                 showYoutube={ this.state.mode === 'media' }
                 showImdb={ this.state.mode === 'media' }
                 showDescription={ verbosity === 'Curriculum Vitæ' }

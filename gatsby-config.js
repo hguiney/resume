@@ -21,6 +21,7 @@ module.exports = {
     },
     social: {
       twitter: `HughxDev`,
+      personalTwitter: `LordPancreas`,
       github: `hguiney`,
       stackoverflow: `214325/hugh-guiney`,
       linkedin: `hughguiney`,
