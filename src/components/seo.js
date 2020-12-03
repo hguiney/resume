@@ -79,7 +79,22 @@ function SEO( { description, lang, meta, keywords, title } ) {
             : []
         )
         .concat( meta ) }
-    />
+    >
+      <style>{`
+        .summary-section li::after {
+          content: ', ';
+          display: 'inline';
+        }
+
+        .summary-section li:last-child::after {
+          content: none;
+        }
+
+        .summary-section:last-child * {
+          margin-bottom: 0;
+        }
+      `}</style>
+    </Helmet>
   )
 }
 

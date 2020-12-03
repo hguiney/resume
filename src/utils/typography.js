@@ -82,6 +82,9 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
       borderBottom: "0",
     },
     "@media print": {
+      "html": {
+        "-webkit-print-color-adjust": "exact",
+      },
       "menu": {
         display: "none !important",
       },
@@ -99,19 +102,25 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
         display: `none`,
       },
     },
-    // ".job-type": {
-    //   display: `inline-block`,
-    //   padding: `0 .5rem`,
-    //   borderRadius: `3rem`,
-    //   backgroundColor: `gray`,
-    //   color: `white`,
-    // },
-    // ".job-type.job-type--contract": {
-    //   backgroundColor: `orange`,
-    // },
-    // ".job-type.job-type--self": {
-    //   backgroundColor: `skyblue`,
-    // },
+    ".job-type": {
+      display: `inline-block`,
+      padding: `0 .5rem`,
+      borderRadius: `3rem`,
+      backgroundColor: `gray`,
+      color: `white`,
+    },
+    ".job-type.job-type--contract": {
+      backgroundColor: `#1C7FA6`,
+    },
+    ".job-type.job-type--self-employment": {
+      backgroundColor: `slateblue`,
+    },
+    ".job-type.job-type--side-project": {
+      backgroundColor: `mediumvioletred`,
+    },
+    ".job-type.job-type--full-time": {
+      backgroundColor: `#008558`,
+    },
     ".bio__attribute": {
       whiteSpace: `nowrap`,
     },
@@ -125,8 +134,19 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
     // "aside": {
     //
     // },
-    "aside > h3, aside > .h3": {
+    ".summary-section h3, .summary-section .h3": {
       fontWeight: `bold`,
+      display: `inline-block`,
+      marginRight: `.5rem`
+    },
+    ".summary-section ul": {
+      display: `inline-block`,
+      marginBottom: `.5rem`
+    },
+    ".summary-section li": {
+      display: "inline-block",
+      width: "auto",
+      marginRight: ".25rem"
     },
     // "main": {
     //   minWidth: rhythm(5),
