@@ -15,6 +15,50 @@ class Experience extends React.PureComponent {
   static clipLargeDurations = true;
   static roundUpSmallDurations = true;
   static roundUpHighNumberOfMonthsToOneYear = false;
+  static mediaTools = [
+    'Airbnb',
+    'Asana',
+    'Animate',
+    'App Store Connect',
+    'Apple Podcasts',
+    'Audition',
+    'Contentful',
+    'Design Systems',
+    'Dreamweaver',
+    'Duolingo',
+    'Facebook',
+    'Facebook Ads',
+    'Facebook API',
+    'Facebook Open Graph API',
+    'Final Cut Pro',
+    'Flash',
+    'Flash/Animate',
+    'Google Analytics',
+    'Google Docs',
+    'Google Hangouts Meet',
+    'Google Maps API',
+    'Google Jamboard',
+    'Google PageSpeed Insights/Lighthouse',
+    'Illustrator',
+    'InDesign',
+    'Instagram',
+    'Photoshop',
+    'Premiere Pro',
+    'Salesforce',
+    'Schema.org',
+    'Shopify',
+    // 'Sketch',
+    'Slack',
+    'Spanish Netflix',
+    'Trello',
+    'Twitter',
+    'Twitter API',
+    'Vimeo',
+    'Vimeo API',
+    'WordPress',
+    'YouTube',
+    'YouTube API',
+  ];
 
   constructor( props ) {
     super( props )
@@ -200,6 +244,16 @@ class Experience extends React.PureComponent {
     return humanized;
   }
 
+  laymanize( jobTitle ) {
+    return (
+      jobTitle
+        .replace( 'Open-Source Maintainer', 'Open-Source Software Maintainer' )
+        .replace( /(Senior )?(React|JavaScript|Front-end|Back-end|Full-stack|Software) (Developer|Engineer)/, '$1Software Developer' )
+        .replace( 'UI/UX Designer', 'Designer' )
+        .replace( 'Consultant', 'Software Consultant' )
+    )
+  }
+
   render() {
     const { data } = this.props
     const siteMetadata = data.site.siteMetadata
@@ -219,7 +273,8 @@ class Experience extends React.PureComponent {
               headingDisplay,
               descriptionDisplay,
               toggleCustomExperienceVisibility,
-              toggleHeadingVisibility
+              toggleHeadingVisibility,
+              mode,
             } = layoutState
             let posts
 
@@ -248,7 +303,7 @@ class Experience extends React.PureComponent {
               <SEO title={ verbosity } />
               { posts.map( ( { node }, index ) => {
                 const { org, orgFka, contractingOrg, type, startDate, startDateFormatted, endDate, endDateFormatted, remote, location } = node.frontmatter
-                const title = node.frontmatter.title || node.fields.slug
+                const title = ( mode === 'media' ) ? this.laymanize( node.frontmatter.title ) : node.frontmatter.title
                 const timeOnJob = this.getDuration( startDate, endDate )
                 const now = moment().toISOString().split( 'T' )[0]
                 const endsInTheFuture = ( endDate > now )
@@ -268,11 +323,51 @@ class Experience extends React.PureComponent {
 
                 const bareSlug = this.getBareSlug( node.fields.slug );
 
+                let roles;
+
+                if ( mode === 'tech' ) {
+                  roles = node.frontmatter.roles;
+                } else if ( mode === 'media' ) {
+                  const laymanizedRoles = (
+                    Array.from(
+                      new Set(
+                        node.frontmatter.roles
+                          .map( role => role
+                            .replace( 'API Design', 'Software Development' )
+                            .replace( /(Front-end|Back-end) Development/, 'Software Development' )
+                            .replace( 'UI Design', 'User Interface Design' )
+                            .replace( 'UX Design', 'User Interface Design' )
+                            .replace( 'Maintenance', 'Software Maintenance' )
+                            .replace( 'Language Design', 'Schema Design' )
+                            .replace( 'Specification Writing', 'Technical Writing' )
+                          )
+                      )
+                    )
+                    .sort()
+                  );
+
+                  roles = laymanizedRoles;
+                }
+
+                let tools;
+ 
+                if ( mode === 'tech' ) {
+                  tools = node.frontmatter.tools;
+                } else if ( mode === 'media' ) {
+                  tools = node.frontmatter.tools.filter( tool => Experience.mediaTools.indexOf( tool ) !== -1 )
+                }
+
+                let experienceItemModifierClasses = '';
+
+                if ( !display[node.fields.slug].current ) {
+                  experienceItemModifierClasses = ' experience-item--collapsed';
+                }
+
                 return (
                   <article
                     id={ bareSlug }
                     key={ bareSlug }
-                    className={ `experience-item${!display[node.fields.slug].current ? ' experience-item--collapsed' : ''}` }
+                    className={ `experience-item${experienceItemModifierClasses}` }
                   >
                     <button
                       className="toggle-experience"
@@ -290,7 +385,13 @@ class Experience extends React.PureComponent {
                           marginBottom: rhythm(1 / 4),
                         }}
                       >
-                        <b className="title" contentEditable>{title}</b>, <span className="org">{org}</span>&#23;
+                        <b
+                          className="title"
+                          contentEditable
+                          suppressContentEditableWarning="true"
+                        >
+                          {title}
+                        </b>, <span className="org">{org}</span>&#23;
                         {
                           orgFka && <span className="org-parenthetical">(<abbr title="formerly known as">fka</abbr> {orgFka})</span>
                         }
@@ -344,17 +445,39 @@ class Experience extends React.PureComponent {
                     />
                     <footer>
                       <dl>
-                        {node.frontmatter.roles.length ? <><dt>Roles</dt> <dd>{ node.frontmatter.roles.join( ', ' )}</dd></> : ''}
-                        {node.frontmatter.tech.length ? <><dt>Tech</dt> <dd>{ node.frontmatter.tech.join( ', ' )}</dd></> : ''}
-                        {node.frontmatter.tools.length ? <><dt>Tools</dt> <dd>{
-                          // Strip version numbers which are no longer relevant
-                          // without deleting version information on the backend
-                          node.frontmatter.tools.map(
-                            tool => tool
-                              .replace( /(Sublime Text|Twitter Bootstrap|ZURB Foundation) [0-9]+/i, '$1' )
-                              .replace( 'Twitter Bootstrap', 'Bootstrap' )
-                          ).join( ', ' )
-                        }</dd></> : '' }
+                        { roles.length
+                          ? <>
+                              <dt>Roles</dt>
+                              <dd>{ roles.join( ', ' )}</dd>
+                            </> 
+                          : ''
+                        }
+                        { ( ( mode === 'tech' ) && node.frontmatter.tech.length )
+                          ? <>
+                              <dt>Tech</dt>
+                              <dd>{ node.frontmatter.tech.join( ', ' )}</dd>
+                            </>
+                          : ''
+                        }
+                        { tools.length
+                          ? <>
+                              <dt>Tools</dt>
+                              <dd>{
+                                // Strip version numbers which are no longer relevant
+                                // without deleting version information on the backend
+                                tools.map(
+                                  tool => tool
+                                    .replace( /(Sublime Text|Twitter Bootstrap|ZURB Foundation) [0-9]+/i, '$1' )
+                                    .replace( 'Twitter Bootstrap', 'Bootstrap' )
+                                    .replace( /(Flash|Animate)/, 'Animate (Flash)' )
+                                    .replace( /\bAPI\b/, 'Integration' )
+                                )
+                                .sort()
+                                .join( ', ' )
+                              }</dd>
+                            </>
+                          : ''
+                        }
                       </dl>
                     </footer>
                   </article>
@@ -377,6 +500,7 @@ export const pageQuery = graphql`
       siteMetadata {
         author
         jobTitle
+        mediaJobTitle
       }
     }
     allMarkdownRemark(

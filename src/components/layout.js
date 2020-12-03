@@ -26,8 +26,10 @@ class Layout extends React.Component {
         }
       },
       descriptionDisplay: {
-        current: false,
+        current: true,
       },
+      mode: 'tech',
+      // mode: 'media',
       toggleCustomExperienceVisibility: ( slug ) => {
         const newState = {
           ...this.state
@@ -150,6 +152,13 @@ class Layout extends React.Component {
     } ) )
   }
 
+  handleModeChange( event ) {
+    this.setState( {
+      ...this.state,
+      mode: event.target.value,
+    } )
+  }
+
   render() {
     const { location, siteMetadata, children } = this.props
     const title = siteMetadata ? siteMetadata.title : ''
@@ -162,10 +171,24 @@ class Layout extends React.Component {
           <hgroup style={{
             marginBottom: rhythm(1 / 4),
           }}>
-            <h1 style={{ marginBottom: 0, }} contentEditable>
+            <h1
+              style={ {
+                marginBottom: 0,
+              } }
+              contentEditable
+              suppressContentEditableWarning="true"
+            >
               {siteMetadata.author}
             </h1>
-            <h2 style={{ marginBottom: rhythm(1/4) }} contentEditable>{siteMetadata.jobTitle}</h2>
+            <h2
+              style={ {
+                marginBottom: rhythm(1/4)
+              } }
+              contentEditable
+              suppressContentEditableWarning="true"
+            >
+              { ( this.state.mode === 'media' ) ? siteMetadata.mediaJobTitle : siteMetadata.jobTitle }
+            </h2>
           </hgroup>
           <VerbosityContext.Consumer>{
             ( { verbosity } ) =>
@@ -174,11 +197,12 @@ class Layout extends React.Component {
                 showPhoneNumber
                 showEmail
                 showPortfolio
-                showGithub
-                showStackoverflow
+                showGithub={ this.state.mode === 'tech' }
+                showStackoverflow={ this.state.mode === 'tech' }
                 showLinkedin
                 showTwitter
-                // showImdb
+                showYoutube={ this.state.mode === 'media' }
+                showImdb={ this.state.mode === 'media' }
                 showDescription={ verbosity === 'Curriculum Vitæ' }
                 portfolioLinkTracking={ verbosity }
                 portfolioName="Website"
@@ -248,61 +272,93 @@ class Layout extends React.Component {
               <input
                 type="checkbox"
                 onClick={ this.state.toggleDescriptionVisibility.bind( this ) }
-                // defaultChecked={ this.state.verbosity === 'Curriculum Vitæ' }
+                defaultChecked={ this.state.descriptionDisplay.current }
                 disabled={ this.state.verbosity === 'Curriculum Vitæ' }
               /> Show Descriptions
             </label>
+
+            <div onChange={ this.handleModeChange.bind( this ) }>
+              <label>
+                <input name="mode" type="radio" value="tech" defaultChecked={ this.state.mode === 'tech' } /> Tech
+              </label>
+              <label>
+                <input name="mode" type="radio" value="media" defaultChecked={ this.state.mode === 'media' } /> Media
+              </label>
+            </div>
           </menu>
           <header style={ {
             textAlign: `center`,
           } }>{ header }</header>
-          <div className="columns">
-            <aside style={ {
-              width: rhythm(53),
-              marginLeft: rhythm(1.5),
-              fontSize: rhythm(1/1.6)
-            } }>
-              <h2 className="h3">Top Tech</h2>
-              <ul>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>JavaScript (ES6+)</li>
-                <li>HTML5</li>
-                <li>CSS3</li>
-              </ul>
-              
-              {/* <h2 className="h3">Top Tools</h2>
-              <ul>
-                <li>Premiere Pro</li>
-                <li>Photoshop</li>
-                <li>Illustrator</li>
-                <li>YouTube</li>
-                <li>Facebook</li>
-              </ul> */}
+          {/* <div className="columns"> */}
 
+          <aside style={ {
+            // width: rhythm(53),
+            width: `36rem`,
+            // marginLeft: rhythm(1.5),
+            fontSize: rhythm(1/1.6),
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            marginTop: rhythm(1.5),
+            marginBottom: rhythm(1.5),
+            border: `1px solid black`,
+            padding: `1rem`,
+          } }>
+            { ( this.state.mode === 'tech' )
+              && <section className="summary-section">
+                <h2 className="h3">Top Tech</h2>
+                <ul>
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>JavaScript (ES6+)</li>
+                  <li>HTML5</li>
+                  <li>CSS3</li>
+                </ul>
+              </section>
+            }
+            
+            { ( this.state.mode === 'media' )
+              && <section className="summary-section">
+                <h2 className="h3">Top Tools</h2>
+                <ul>
+                  <li>Premiere Pro</li>
+                  <li>Photoshop</li>
+                  <li>Illustrator</li>
+                  <li>YouTube</li>
+                  <li>Facebook</li>
+                </ul>
+              </section>
+            }
+
+            <section className="summary-section">
               <h2 className="h3">Languages</h2>
               <ul>
                 <li>English (Native)</li>
                 <li>Japanese (Elementary)</li>
               </ul>
+            </section>
 
-              {/* <h2 className="h3">Certifications</h2>
-              <ul>
-                <li>Arc.dev Certified Developer</li>
-              </ul> */}
+            {/* <h2 className="h3">Certifications</h2>
+            <ul>
+              <li>Arc.dev Certified Developer</li>
+            </ul> */}
 
+            <section className="summary-section">
               <h2 className="h3">Honors &amp; Awards</h2>
               <ul>
                 <li>Runner-Up, TechCrunch Disrupt NY Hackathon 2017</li>
               </ul>
+            </section>
 
+            <section className="summary-section">
               <h2 className="h3">Other Training</h2>
               <ul>
                 <li>Improvisational Theater, ImprovBoston Comedy School</li>
               </ul>
-            </aside>
-            <main>{ children }</main>
-          </div>
+            </section>
+          </aside>
+          <main>{ children }</main>
+          {/* </div> */}
+          
         </div>
       </VerbosityContext.Provider>
     )

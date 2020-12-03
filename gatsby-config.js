@@ -7,6 +7,7 @@ module.exports = {
     // jobTitle: `Web Developer, UX Designer`,
     // jobTitle: `UX Developer`,
     jobTitle: `Senior React Developer & UI/UX Designer`,
+    mediaJobTitle: `Past: Senior Software Developer & Designer, Media Producer`,
     // jobTitle: `Senior JavaScript Developer & UI/UX Designer`,
     description: `I handcraft online experiences that are user-focused,  content-driven, and work across devices.`,
     siteUrl: `https://hughx.dev/resume/`,
@@ -24,6 +25,7 @@ module.exports = {
       stackoverflow: `214325/hugh-guiney`,
       linkedin: `hughguiney`,
       imdb: `nm4273358`,
+      youtube: 'HughGuiney',
     },
   },
   plugins: [
