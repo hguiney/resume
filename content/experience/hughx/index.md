@@ -3,7 +3,7 @@ title: Consultant
 org: hughx
 startDate: "2006-03"
 endDate:
-priority: 1
+priority: 3
 location: Boston, MA
 remote: null
 defaultDisplay: true

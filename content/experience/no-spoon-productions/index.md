@@ -7,6 +7,7 @@ description: "Independent film and television label. Filmography includes “Twe
 location: Boston, MA
 remote: false
 defaultDisplay: false
+priority: 4
 type: side-project
 roles: [
   'Acting',

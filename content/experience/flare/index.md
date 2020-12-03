@@ -7,6 +7,7 @@ endDate: "2020-12-05"
 location: Boston, MA
 remote: true
 defaultDisplay: true
+priority: 1
 type: contract
 roles: [
   'Management',
