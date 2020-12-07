@@ -3,10 +3,11 @@ title: Engineering Manager
 org: Flare
 contractingOrg: Duomo
 startDate: "2020-08-04"
-endDate: "2020-12-05"
+endDate: "2020-12-15"
 location: Boston, MA
 remote: true
 defaultDisplay: true
+priority: 1
 type: contract
 roles: [
   'Management',

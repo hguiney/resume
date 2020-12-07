@@ -7,6 +7,7 @@ endDate: "2020-03"
 location: Bethesda, MD
 remote: true
 defaultDisplay: true
+priority: 5
 type: contract
 roles: [
   'Front-end Development',
@@ -22,7 +23,6 @@ tools: [
   'Shopify',
   'Shopify Theme Kit',
   'BEM',
-  'React',
 ]
 ---
 

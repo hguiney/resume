@@ -6,6 +6,7 @@ endDate: "2020-11-06"
 location: Boulder, CO
 remote: true
 defaultDisplay: true
+priority: 2
 type: contract
 roles: [
   'Front-end Development',

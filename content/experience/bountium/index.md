@@ -7,6 +7,7 @@ endDate: "2019-09"
 location: Boston, MA
 remote: true
 defaultDisplay: true
+priority: 6
 type: contract
 roles: [
   'UI Design',
