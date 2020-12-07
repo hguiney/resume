@@ -354,7 +354,9 @@ class Experience extends React.PureComponent {
                 if ( mode === 'tech' ) {
                   tools = node.frontmatter.tools;
                 } else if ( mode === 'media' ) {
-                  tools = node.frontmatter.tools.filter( tool => Experience.mediaTools.indexOf( tool ) !== -1 )
+                  tools = node.frontmatter.tools
+                    .filter( tool => Experience.mediaTools.indexOf( tool ) !== -1 )
+                    .map( tool => tool.replace( /\bAPI\b/, 'Integration' ) )
                 }
 
                 let experienceItemModifierClasses = '';
@@ -470,7 +472,6 @@ class Experience extends React.PureComponent {
                                     .replace( /(Sublime Text|Twitter Bootstrap|ZURB Foundation) [0-9]+/i, '$1' )
                                     .replace( 'Twitter Bootstrap', 'Bootstrap' )
                                     .replace( /(Flash|Animate)/, 'Animate (Flash)' )
-                                    .replace( /\bAPI\b/, 'Integration' )
                                 )
                                 .sort()
                                 .join( ', ' )
