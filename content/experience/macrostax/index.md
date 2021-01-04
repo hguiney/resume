@@ -2,7 +2,7 @@
 title: Senior React Developer
 org: Macrostax
 startDate: "2020-09-09"
-endDate: "2020-12-31"
+endDate: "2021-01-31"
 location: Boulder, CO
 remote: true
 defaultDisplay: true

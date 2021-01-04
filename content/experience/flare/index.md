@@ -3,7 +3,7 @@ title: Engineering Manager
 org: Flare
 contractingOrg: Duomo
 startDate: "2020-08-04"
-endDate: "2020-12-31"
+endDate: "2021-01-31"
 location: Boston, MA
 remote: true
 defaultDisplay: true
@@ -23,6 +23,7 @@ tech: [
 ]
 tools: [
   'React Native',
+  'Redux',
   'GitHub',
   'Slack',
   'Trello',
