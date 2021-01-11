@@ -1,6 +1,8 @@
 ---
 title: Senior React Developer
 org: Macrostax
+orgIndustry: [ 'fitness' ]
+orgSize: startup
 startDate: "2020-09-09"
 endDate: "2021-01-31"
 location: Boulder, CO

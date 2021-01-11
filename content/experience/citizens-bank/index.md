@@ -1,6 +1,8 @@
 ---
 title: Senior Front-end Developer
 org: Citizens Bank
+orgIndustry: [ 'finance', 'banking' ]
+orgSize: large
 contractingOrg: Publicis Sapient
 contractingOrgFka: SapientNitro
 startDate: "2013-08"

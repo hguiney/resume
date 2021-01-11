@@ -1,6 +1,8 @@
 ---
 title: Consultant
 org: hughx
+orgIndustry: [ 'agency' ]
+orgSize: startup
 startDate: "2006-03"
 endDate:
 priority: 1

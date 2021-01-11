@@ -1,6 +1,8 @@
 ---
 title: Open-Source Maintainer
 org: HVML
+orgIndustry: [ 'nonprofit', 'technology' ]
+orgSize: null
 startDate: "2013-11"
 endDate:
 priority: 3

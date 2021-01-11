@@ -1,6 +1,8 @@
 ---
 title: Senior Software Engineer
 org: 3Play Media
+orgIndustry: [ 'media', 'video' ]
+orgSize: startup
 startDate: "2017-09"
 endDate: "2017-11"
 description: Helped clear backlog of bugs and features for video transcription product used by over 2,500 customers including Procter & Gamble, T-Mobile, and MIT.

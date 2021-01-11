@@ -1,6 +1,8 @@
 ---
 title: Senior Full-stack Developer & UI/UX Designer
 org: Vendate
+orgIndustry: [ 'social', 'wedding' ]
+orgSize: startup
 startDate: "2015-03"
 endDate: "2016-01"
 description: Built premiere web app for startup allowing engaged couples and wedding vendors to easily find each other.

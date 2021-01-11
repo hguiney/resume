@@ -1,6 +1,8 @@
 ---
 title: Senior React Developer & UI/UX Designer
 org: Bountium
+orgIndustry: [ 'finance', 'blockchain' ]
+orgSize: startup
 contractingOrg: Duomo
 startDate: "2019-08"
 endDate: "2019-09"

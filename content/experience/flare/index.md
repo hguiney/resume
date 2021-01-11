@@ -1,6 +1,8 @@
 ---
 title: Engineering Manager
 org: Flare
+orgIndustry: [ 'safety' ]
+orgSize: startup
 contractingOrg: Duomo
 startDate: "2020-08-04"
 endDate: "2021-01-31"

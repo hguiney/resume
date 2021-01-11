@@ -1,6 +1,8 @@
 ---
 title: Senior Front-end Developer
 org: COMFORT Communication Project
+orgIndustry: [ 'health' ]
+orgSize: smb
 location: Los Angeles, CA
 remote: true
 defaultDisplay: false

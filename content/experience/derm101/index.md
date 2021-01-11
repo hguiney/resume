@@ -1,6 +1,8 @@
 ---
 title: Senior Full-stack Developer
 org: Derm101
+orgIndustry: [ 'health', 'medicine' ]
+orgSize: smb
 startDate: "2018-04"
 endDate: "2018-05-22"
 description: Improved load time performance of WordPress subscription site.
