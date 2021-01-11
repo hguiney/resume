@@ -1,5 +1,5 @@
 ---
-title: Engineering Manager
+title: Engineering Manager & React Native Developer
 org: Flare
 orgIndustry: [ 'safety' ]
 orgSize: startup
