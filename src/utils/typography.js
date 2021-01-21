@@ -121,6 +121,10 @@ USWebDesignStandards.overrideThemeStyles = ( { rhythm }, options, styles ) => {
     ".job-type.job-type--full-time": {
       backgroundColor: `#008558`,
     },
+    ".job-type.job-type--freelance": {
+      // backgroundColor: `darkslategray`,
+      backgroundColor: `#1C7FA6`,
+    },
     ".bio__attribute": {
       whiteSpace: `nowrap`,
     },

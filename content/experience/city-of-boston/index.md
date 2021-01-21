@@ -9,7 +9,7 @@ endDate: "2020-09-04"
 location: Boston, MA
 remote: null
 defaultDisplay: true
-priority: 3
+priority: 2
 type: contract
 roles: [
   'Front-end Development',

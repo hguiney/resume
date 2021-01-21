@@ -7,7 +7,7 @@ endDate: "2020-03"
 location: Bethesda, MD
 remote: true
 defaultDisplay: true
-priority: 5
+priority: 2
 type: contract
 roles: [
   'Front-end Development',
