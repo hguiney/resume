@@ -4,7 +4,7 @@ org: Macrostax
 orgIndustry: [ 'fitness' ]
 orgSize: startup
 startDate: "2020-09-09"
-endDate: "2021-01-31"
+endDate: "2020-12-28"
 location: Boulder, CO
 remote: true
 defaultDisplay: true
