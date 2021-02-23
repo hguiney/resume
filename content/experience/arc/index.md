@@ -5,7 +5,7 @@ orgIndustry: [ 'nonprofit', 'government' ]
 orgSize: startup
 description: "Assessing design candidates for full-time positions with Arc’s clients."
 startDate: "2021-01-11"
-endDate: "2021-02-28"
+endDate: "2021-02-09"
 remote: true
 defaultDisplay: true
 priority: 2

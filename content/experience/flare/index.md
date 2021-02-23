@@ -5,7 +5,7 @@ orgIndustry: [ 'safety' ]
 orgSize: startup
 contractingOrg: Duomo
 startDate: "2020-08-04"
-endDate: "2021-01-31"
+endDate: "2021-03-31"
 location: Boston, MA
 remote: true
 defaultDisplay: true
