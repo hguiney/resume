@@ -3,7 +3,11 @@ title: Senior React Developer & UI/UX Designer
 org: City of Boston
 orgIndustry: [ 'nonprofit', 'government' ]
 orgSize: large
-description: "Implemented redesign of Metrolist, a tool that helps Boston residents search for affordable housing"
+description: "Implemented UX redesign of Metrolist, a tool that helps Boston residents search for affordable housing. Migrated from static HTML page to interactive React application.
+
+Project results:
+• Doubled monthly site traffic
+• Increased Customer Effort Score by 1.5 points."
 startDate: "2020-03-02"
 endDate: "2020-09-04"
 location: Boston, MA
