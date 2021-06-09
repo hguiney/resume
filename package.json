@@ -42,14 +42,14 @@
   "devDependencies": {
     "prettier": "^1.17.0"
   },
-  "homepage": "https://github.com/hguiney/resume#readme",
+  "homepage": "https://github.com/HughxDev/resume#readme",
   "keywords": [
     "gatsby"
   ],
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hguiney/resume.git"
+    "url": "git+https://github.com/HughxDev/resume.git"
   },
   "scripts": {
     "build": "gatsby build",

@@ -23,7 +23,7 @@ module.exports = {
     social: {
       twitter: `HughxDev`,
       personalTwitter: `LordPancreas`,
-      github: `hguiney`,
+      github: `HughxDev`,
       stackoverflow: `214325/hugh-guiney`,
       linkedin: `hughguiney`,
       imdb: `nm4273358`,
